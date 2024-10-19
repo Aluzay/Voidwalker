@@ -17,7 +17,11 @@ func Update(delta: float):
 			player.velocity += player.get_gravity() * delta
 			
 			player.direction = Input.get_axis("Left", "Right")
-	
+			
+			if player.wall_collider.is_colliding() and player.direction:
+				Transitioned.emit(self, "playerwallslide")
+				return
+			
 			if player.direction:
 				player.velocity.x = player.direction * SPEED
 			else:

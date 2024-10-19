@@ -3,6 +3,8 @@ extends CharacterBody2D
 class_name Player
 
 @onready var camera: Camera2D = $Camera2D
+@onready var wall_collider = $WallCollider
+
 var anim_player : AnimationPlayer
 var sprite : Sprite2D
 var can_dash : bool = true
@@ -15,11 +17,14 @@ func _ready() -> void:
 	anim_player.play("Idle")
 
 func _physics_process(delta: float) -> void:
-	if (velocity.x > 0):
-		sprite.flip_h = false
-	elif (velocity.x < 0):
-		sprite.flip_h = true
+	direction = Input.get_axis("Left", "Right")
 	
+	if (direction == 1):
+		sprite.flip_h = false
+		wall_collider.scale.x = 1
+	elif (direction == -1):
+		sprite.flip_h = true
+		wall_collider.scale.x = -1
 	move_and_slide()
 	
 func get_animation_player () -> AnimationPlayer:
