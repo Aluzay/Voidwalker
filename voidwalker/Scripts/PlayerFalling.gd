@@ -30,7 +30,10 @@ func Update(delta: float):
 			if Input.is_action_just_pressed("Dash") and player.direction and player.can_dash:
 				Transitioned.emit(self, "playerdash")
 			
-			if Input.is_action_just_pressed("ui_accept") and player.can_jump:
-				Transitioned.emit(self, "playerjump")
+			if Input.is_action_just_pressed("ui_accept") and player.can_double_jump:
+				Transitioned.emit(self, "playerdoublejump")
 		else:
 			Transitioned.emit(self, "playeridle")
+
+func Exit():
+	player.can_double_jump = false

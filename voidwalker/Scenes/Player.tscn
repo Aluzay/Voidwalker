@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c433jbwbf30gy"]
+[gd_scene load_steps=21 format=3 uid="uid://c433jbwbf30gy"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_esbea"]
 [ext_resource type="Texture2D" uid="uid://bp5jw1qtk7hx" path="res://AnimationSheet/PlayerSheet.png" id="2_csmvn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerWallJump.gd" id="9_bswbk"]
 [ext_resource type="Script" path="res://Scripts/PlayerDash.gd" id="9_m02tr"]
 [ext_resource type="Script" path="res://Scripts/PlayerWalk.gd" id="9_r3uj6"]
+[ext_resource type="Script" path="res://Scripts/PlayerDoubleJump.gd" id="10_n1o6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24h6m"]
 size = Vector2(16, 41)
@@ -411,6 +412,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_6h4n1")
@@ -445,6 +447,10 @@ player = NodePath("../..")
 script = ExtResource("9_bswbk")
 player = NodePath("../..")
 
+[node name="PlayerDoubleJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("10_n1o6u")
+player = NodePath("../..")
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.8
 autostart = true
@@ -453,5 +459,15 @@ autostart = true
 position = Vector2(0, 20)
 target_position = Vector2(10, 0)
 collision_mask = 2
+
+[node name="StairCollider2" type="RayCast2D" parent="."]
+position = Vector2(10, 41)
+target_position = Vector2(0, 3)
+collision_mask = 4
+
+[node name="StairCollider" type="RayCast2D" parent="."]
+position = Vector2(5, 41)
+target_position = Vector2(4, 0)
+collision_mask = 4
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

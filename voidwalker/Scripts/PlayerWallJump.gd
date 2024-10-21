@@ -19,6 +19,7 @@ func Enter():
 		player.velocity.y = JUMP_VELOCITY
 		player.velocity.x = BACK_VELOCITY * (-1 * player.direction)
 		control_timer = 0.0
+		player.can_jump_on_wall = false
 		
 func Update(delta: float):	
 	if not player.is_on_floor():

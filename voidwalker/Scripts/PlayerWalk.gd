@@ -11,7 +11,8 @@ func Enter():
 
 func Update(delta: float):
 	if player:
-		if not player.is_on_floor():
+		if not player.is_on_floor() and not player.stair_collider.is_colliding() and not player.stair_collider2.is_colliding():
+			print(player.stair_collider2.is_colliding())
 			Transitioned.emit(self, "playerfalling")
 			return
 			
@@ -26,5 +27,5 @@ func Update(delta: float):
 		if Input.is_action_just_pressed("Dash") and player.direction and player.can_dash:
 			Transitioned.emit(self, "playerdash")
 			
-		if Input.is_action_just_pressed("ui_accept") and player.can_jump:
+		if Input.is_action_just_pressed("ui_accept"):
 			Transitioned.emit(self, "playerjump")	

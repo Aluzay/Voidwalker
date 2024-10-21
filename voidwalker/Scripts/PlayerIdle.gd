@@ -21,5 +21,5 @@ func Update(delta: float):
 		else:
 			Transitioned.emit(self, "playerwalk")
 			
-		if Input.is_action_just_pressed("ui_accept") and player.can_jump:
+		if Input.is_action_just_pressed("ui_accept"):
 			Transitioned.emit(self, "playerjump")

@@ -14,9 +14,12 @@ func Update(delta: float):
 	if player:
 		player.direction = Input.get_axis("Left", "Right")
 		
-		if Input.is_action_just_pressed("ui_accept") and player.direction:
+		if Input.is_action_just_pressed("ui_accept") and player.direction and player.can_jump_on_wall:
 			Transitioned.emit(self, "playerwalljump")
 		
+		if player.is_on_floor():
+			Transitioned.emit(self, "playeridle")
+			
 		if player.direction and player.wall_collider.is_colliding():
 			player.velocity.y += WALL_SLIDING_SPEED * delta
 			player.velocity.y = min(player.velocity.y, WALL_SLIDING_SPEED)

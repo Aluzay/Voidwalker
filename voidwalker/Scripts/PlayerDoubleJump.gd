@@ -1,5 +1,5 @@
 extends State
-class_name PlayerJump
+class_name PlayerDoubleJump
 
 @export var player: Player
 var anim_player : AnimationPlayer
@@ -13,7 +13,7 @@ func Enter():
 	if player:
 		player.velocity.y = JUMP_VELOCITY
 		anim_player.play("Jump")
-		player.can_double_jump = true
+		player.can_double_jump = false
 
 func Update(delta: float):	
 	if not player.is_on_floor():
