@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvtu2i74w4qkv"]
+
+[ext_resource type="Script" path="res://Scenes/RoomTransitionCamera.gd" id="1_1y8em"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_307vk"]
+size = Vector2(1152, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mghd4"]
+size = Vector2(1152, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eucp0"]
+size = Vector2(16, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mths0"]
+size = Vector2(16, 648)
+
+[node name="RoomTransitionCamera" type="Camera2D"]
+zoom = Vector2(1.5, 1.5)
+script = ExtResource("1_1y8em")
+
+[node name="AreaTop" type="Area2D" parent="."]
+
+[node name="CollisionShapeTop" type="CollisionShape2D" parent="AreaTop"]
+position = Vector2(0, -208)
+shape = SubResource("RectangleShape2D_307vk")
+
+[node name="AreaBottom" type="Area2D" parent="."]
+
+[node name="CollisionShapeBottom" type="CollisionShape2D" parent="AreaBottom"]
+position = Vector2(0, 208)
+shape = SubResource("RectangleShape2D_mghd4")
+
+[node name="AreaLeft" type="Area2D" parent="."]
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="AreaLeft"]
+position = Vector2(-376, 0)
+shape = SubResource("RectangleShape2D_eucp0")
+
+[node name="AreaRight" type="Area2D" parent="."]
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="AreaRight"]
+position = Vector2(376, 0)
+shape = SubResource("RectangleShape2D_mths0")
+
+[connection signal="body_entered" from="AreaTop" to="." method="_OnBodyEnteredTop"]
+[connection signal="body_entered" from="AreaBottom" to="." method="_OnBodyEnteredBottom"]
+[connection signal="body_entered" from="AreaLeft" to="." method="_OnBodyEnteredLeft"]
+[connection signal="body_entered" from="AreaRight" to="." method="_OnBodyEnteredRight"]

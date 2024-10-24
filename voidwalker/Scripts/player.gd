@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 class_name Player
 
-@onready var camera: Camera2D = $Camera2D
 @onready var wall_collider = $WallCollider
 @onready var stair_collider = $StairCollider
 @onready var stair_collider2 = $StairCollider2
@@ -13,6 +12,8 @@ var can_dash : bool = true
 var can_jump_on_wall : bool = true
 var can_double_jump = true
 var direction = 0
+var current_room
+var previous_room
 
 func _ready() -> void:
 	anim_player = $AnimationPlayer
@@ -24,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	
 	if (stair_collider.is_colliding() or stair_collider2.is_colliding()) and direction:
 		var collision = stair_collider.get_collider()
-		print("cOLLIDE")
+		
 		if collision != null:
 			if collision.name == "StairTiles":
 				velocity.y = -100
@@ -45,3 +46,24 @@ func _on_timer_timeout() -> void:
 		can_dash = !can_dash
 	if not can_jump_on_wall:
 		can_jump_on_wall = !can_jump_on_wall
+
+
+func _on_room_detector_area_entered(area: Area2D) -> void:
+	var collision_shape : CollisionShape2D = area.get_children()[0]
+	current_room = collision_shape
+	print(collision_shape.global_position)
+	print(collision_shape.shape.size)
+	RoomTransitor.change_room(collision_shape.global_position, collision_shape.shape.size * 2)
+	
+
+
+func _on_room_detector_area_exited(area: Area2D) -> void:
+	var collision_shape : CollisionShape2D = area.get_children()[0]
+	
+	if collision_shape != current_room:
+		previous_room = current_room
+	else:
+		RoomTransitor.change_room(previous_room.global_position, previous_room.shape.size * 2)
+		
+		
+		
