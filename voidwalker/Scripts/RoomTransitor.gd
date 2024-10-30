@@ -12,6 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func change_room(room_position: Vector2, room_size: Vector2) -> void:
+func change_room(room_position: Vector2, room_size: Vector2, area: Area2D) -> void:
 	camera.current_room_center = room_position
 	camera.current_room_size = room_size
+	camera.current_area = area

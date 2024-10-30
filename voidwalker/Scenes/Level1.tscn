@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://bolihdcq7boeg"]
+[gd_scene load_steps=24 format=4 uid="uid://bolihdcq7boeg"]
 
 [ext_resource type="PackedScene" uid="uid://c433jbwbf30gy" path="res://Scenes/Player.tscn" id="1_iamit"]
 [ext_resource type="Texture2D" uid="uid://djuqjalvb6oie" path="res://Tiles/main_lev_build.png" id="2_1mntr"]
 [ext_resource type="Script" path="res://Scripts/PlayerWallSlide.gd" id="3_tmrjm"]
 [ext_resource type="PackedScene" uid="uid://dkra1r6kxli03" path="res://Scenes/SawBlade.tscn" id="4_4iwtw"]
-[ext_resource type="Script" path="res://Scripts/Camera.gd" id="5_68vlm"]
+[ext_resource type="PackedScene" uid="uid://cwqfhd76a0mtg" path="res://Camera2D.tscn" id="5_bm5hv"]
+[ext_resource type="PackedScene" uid="uid://dubhn4visnxyv" path="res://Room.tscn" id="6_vs1sj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fg3oi"]
 texture = ExtResource("2_1mntr")
@@ -10960,19 +10961,19 @@ physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 4
 sources/0 = SubResource("TileSetAtlasSource_qvawb")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivuwt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pltwx"]
 size = Vector2(656, 320)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jconc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj46a"]
 size = Vector2(896, 448)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sidt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qxuk"]
 size = Vector2(928, 784)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2d16v"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejv3k"]
 size = Vector2(239, 192)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7lc3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ik8mo"]
 size = Vector2(176, 640)
 
 [node name="Level1" type="Node2D"]
@@ -11041,47 +11042,49 @@ follow_viewport_scale = 1.3
 [node name="SawBlade" parent="." instance=ExtResource("4_4iwtw")]
 position = Vector2(-359, 349)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(1e-05, 1e-05)
+[node name="Camera2D" parent="." instance=ExtResource("5_bm5hv")]
 zoom = Vector2(1.5, 1.5)
-process_callback = 0
-script = ExtResource("5_68vlm")
 
-[node name="Room1" type="Area2D" parent="."]
+[node name="Room" parent="." instance=ExtResource("6_vs1sj")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Room1"]
+[node name="CollisionShape2D" parent="Room" index="0"]
 position = Vector2(-248, -160)
-shape = SubResource("RectangleShape2D_ivuwt")
+shape = SubResource("RectangleShape2D_pltwx")
 
-[node name="Room1" type="Area2D" parent="Room1"]
+[node name="Room2" parent="." instance=ExtResource("6_vs1sj")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Room1/Room1"]
-position = Vector2(-248, -160)
-shape = SubResource("RectangleShape2D_ivuwt")
-
-[node name="Room2" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Room2"]
+[node name="CollisionShape2D" parent="Room2" index="0"]
 position = Vector2(-384, 224)
-shape = SubResource("RectangleShape2D_jconc")
+shape = SubResource("RectangleShape2D_rj46a")
 
-[node name="Room3" type="Area2D" parent="."]
+[node name="Room3" parent="." instance=ExtResource("6_vs1sj")]
+limit_top = 431
+limit_bottom = 1216
+limit = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Room3"]
+[node name="CollisionShape2D" parent="Room3" index="0"]
 position = Vector2(-416, 824)
-shape = SubResource("RectangleShape2D_5sidt")
+shape = SubResource("RectangleShape2D_7qxuk")
 
-[node name="Room4" type="Area2D" parent="."]
+[node name="Room4" parent="." instance=ExtResource("6_vs1sj")]
+limit_left = -1248
+limit_bottom = 1072
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Room4"]
+[node name="CollisionShape2D" parent="Room4" index="0"]
 position = Vector2(-968.5, 944)
-shape = SubResource("RectangleShape2D_2d16v")
+shape = SubResource("RectangleShape2D_ejv3k")
 
-[node name="Room5" type="Area2D" parent="."]
+[node name="Room5" parent="." instance=ExtResource("6_vs1sj")]
+limit_left = -1248
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Room5"]
+[node name="CollisionShape2D" parent="Room5" index="0"]
 position = Vector2(-1128, 624)
-shape = SubResource("RectangleShape2D_o7lc3")
+shape = SubResource("RectangleShape2D_ik8mo")
 
 [editable path="Player"]
 [editable path="SawBlade"]
+[editable path="Room"]
+[editable path="Room2"]
+[editable path="Room3"]
+[editable path="Room4"]
+[editable path="Room5"]

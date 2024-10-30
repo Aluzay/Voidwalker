@@ -53,17 +53,13 @@ func _on_room_detector_area_entered(area: Area2D) -> void:
 	current_room = collision_shape
 	print(collision_shape.global_position)
 	print(collision_shape.shape.size)
-	RoomTransitor.change_room(collision_shape.global_position, collision_shape.shape.size * 2)
+	RoomTransitor.change_room(collision_shape.global_position, collision_shape.shape.size * 2, area)
 	
-
-
 func _on_room_detector_area_exited(area: Area2D) -> void:
 	var collision_shape : CollisionShape2D = area.get_children()[0]
 	
 	if collision_shape != current_room:
 		previous_room = current_room
 	else:
-		RoomTransitor.change_room(previous_room.global_position, previous_room.shape.size * 2)
-		
-		
-		
+		if previous_room:
+			RoomTransitor.change_room(previous_room.global_position, previous_room.shape.size * 2, area)

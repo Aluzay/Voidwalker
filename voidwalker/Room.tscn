@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dubhn4visnxyv"]
+
+[ext_resource type="Script" path="res://Room.gd" id="1_0orfp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoocl"]
+
+[node name="Room" type="Area2D"]
+script = ExtResource("1_0orfp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hoocl")
