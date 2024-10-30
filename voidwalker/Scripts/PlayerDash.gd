@@ -20,7 +20,9 @@ func Enter():
 		
 func Update(delta: float):	
 	var current_distance = abs(player.position.x - dash_start_position)
-	if current_distance <= DASH_MAX_DIST and not player.is_on_wall():
+	player.direction = Input.get_axis("Left", "Right")
+	
+	if current_distance <= DASH_MAX_DIST and not player.is_on_wall() and player.direction:
 		player.velocity.x = player.direction * DASH_SPEED * dash_curve.sample(current_distance / DASH_MAX_DIST)
 		player.velocity.y = 0
 	else:

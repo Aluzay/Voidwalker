@@ -1,7 +1,7 @@
 extends Camera2D
 
 @export var follow_smoothing: float = 0.1
-@export var limit_smoothing: float = 14
+@export var limit_smoothing: float = 5
 
 var smoothing: float
 
@@ -10,7 +10,6 @@ var current_room_size: Vector2
 var current_area: Area2D
 
 @onready var view_size: Vector2 = get_viewport_rect().size
-@onready var timer : Timer = $Timer
 
 var zoom_view_size: Vector2
 
@@ -57,7 +56,3 @@ func apply_limit(delta: float):
 		limit_top = lerp(limit_top, current_area.limit_top, limit_smoothing * delta)
 		limit_left = lerp(limit_left, current_area.limit_left, limit_smoothing * delta)
 		limit_right = lerp(limit_right, current_area.limit_right, limit_smoothing * delta)
-
-
-func _on_timer_timeout() -> void:
-	pass

@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://djuqjalvb6oie" path="res://Tiles/main_lev_build.png" id="2_1mntr"]
 [ext_resource type="Script" path="res://Scripts/PlayerWallSlide.gd" id="3_tmrjm"]
 [ext_resource type="PackedScene" uid="uid://dkra1r6kxli03" path="res://Scenes/SawBlade.tscn" id="4_4iwtw"]
-[ext_resource type="PackedScene" uid="uid://cwqfhd76a0mtg" path="res://Camera2D.tscn" id="5_bm5hv"]
-[ext_resource type="PackedScene" uid="uid://dubhn4visnxyv" path="res://Room.tscn" id="6_vs1sj"]
+[ext_resource type="PackedScene" uid="uid://cwqfhd76a0mtg" path="res://Scenes/Camera2D.tscn" id="5_bm5hv"]
+[ext_resource type="PackedScene" uid="uid://dubhn4visnxyv" path="res://Scenes/Room.tscn" id="6_vs1sj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fg3oi"]
 texture = ExtResource("2_1mntr")
@@ -11044,21 +11044,31 @@ position = Vector2(-359, 349)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_bm5hv")]
 zoom = Vector2(1.5, 1.5)
+limit_left = -2250
+limit_top = -320
+limit_bottom = 2215
 
 [node name="Room" parent="." instance=ExtResource("6_vs1sj")]
+limit_left = -2250
+limit_top = -320
+limit_bottom = 2215
 
 [node name="CollisionShape2D" parent="Room" index="0"]
 position = Vector2(-248, -160)
 shape = SubResource("RectangleShape2D_pltwx")
 
 [node name="Room2" parent="." instance=ExtResource("6_vs1sj")]
+limit_left = -2250
+limit_top = -320
+limit_bottom = 2215
 
 [node name="CollisionShape2D" parent="Room2" index="0"]
 position = Vector2(-384, 224)
 shape = SubResource("RectangleShape2D_rj46a")
 
 [node name="Room3" parent="." instance=ExtResource("6_vs1sj")]
-limit_top = 431
+limit_left = -2250
+limit_top = 442
 limit_bottom = 1216
 limit = true
 
@@ -11068,6 +11078,7 @@ shape = SubResource("RectangleShape2D_7qxuk")
 
 [node name="Room4" parent="." instance=ExtResource("6_vs1sj")]
 limit_left = -1248
+limit_top = -320
 limit_bottom = 1072
 
 [node name="CollisionShape2D" parent="Room4" index="0"]
@@ -11076,6 +11087,8 @@ shape = SubResource("RectangleShape2D_ejv3k")
 
 [node name="Room5" parent="." instance=ExtResource("6_vs1sj")]
 limit_left = -1248
+limit_top = -320
+limit_bottom = 975
 
 [node name="CollisionShape2D" parent="Room5" index="0"]
 position = Vector2(-1128, 624)
