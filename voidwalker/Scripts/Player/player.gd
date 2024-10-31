@@ -5,6 +5,7 @@ class_name Player
 @onready var wall_collider = $WallCollider
 @onready var stair_collider = $StairCollider
 @onready var stair_collider2 = $StairCollider2
+@onready var attack_area = $AttackArea
 
 var anim_player : AnimationPlayer
 var sprite : Sprite2D
@@ -14,6 +15,8 @@ var can_double_jump = true
 var direction = 0
 var current_room
 var previous_room
+
+signal facing_direction_changed(facing_right : bool)
 
 func _ready() -> void:
 	anim_player = $AnimationPlayer
@@ -33,9 +36,13 @@ func _physics_process(delta: float) -> void:
 	if (direction == 1):
 		sprite.flip_h = false
 		wall_collider.scale.x = 1
+		
 	elif (direction == -1):
 		sprite.flip_h = true
 		wall_collider.scale.x = -1
+	
+	emit_signal("facing_direction_changed", !sprite.flip_h)
+	
 	move_and_slide()
 	
 func get_animation_player () -> AnimationPlayer:

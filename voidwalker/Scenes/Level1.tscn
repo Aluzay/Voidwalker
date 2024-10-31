@@ -1,9 +1,11 @@
-[gd_scene load_steps=24 format=4 uid="uid://bolihdcq7boeg"]
+[gd_scene load_steps=26 format=4 uid="uid://bolihdcq7boeg"]
 
 [ext_resource type="PackedScene" uid="uid://c433jbwbf30gy" path="res://Scenes/Player.tscn" id="1_iamit"]
 [ext_resource type="Texture2D" uid="uid://djuqjalvb6oie" path="res://Tiles/main_lev_build.png" id="2_1mntr"]
-[ext_resource type="Script" path="res://Scripts/PlayerWallSlide.gd" id="3_tmrjm"]
+[ext_resource type="PackedScene" uid="uid://dc10jg6oq00b5" path="res://Scenes/FlyingGolem.tscn" id="3_7gqir"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerWallSlide.gd" id="3_tmrjm"]
 [ext_resource type="PackedScene" uid="uid://dkra1r6kxli03" path="res://Scenes/SawBlade.tscn" id="4_4iwtw"]
+[ext_resource type="PackedScene" uid="uid://db2ekr5xklrqs" path="res://Scenes/BackgroundSaw.tscn" id="4_c7lrb"]
 [ext_resource type="PackedScene" uid="uid://cwqfhd76a0mtg" path="res://Scenes/Camera2D.tscn" id="5_bm5hv"]
 [ext_resource type="PackedScene" uid="uid://dubhn4visnxyv" path="res://Scenes/Room.tscn" id="6_vs1sj"]
 
@@ -10990,6 +10992,12 @@ tile_set = SubResource("TileSet_lrydh")
 tile_map_data = PackedByteArray("AADr//j/AAB4ABEAAADr//f/AAB4ABAAAADr//b/AAB4AA8AAADr//X/AAB4AA4AAADr//T/AAB4AA0AAADr//P/AAB4AAwAAADs//P/AAB5AAwAAADq//P/AAB3AAwAAADr//L/AAB4AAsAAADq//L/AAB3AAsAAADp//L/AAB2AAsAAADo//L/AAB2AAsAAADs//L/AAB5AAsAAADt//L/AAB6AAsAAADu//L/AAB7AAsAAADv//L/AAB8AAsAAADw//L/AAB9AAsAAAD4//b/AABjAB0AAAD4//f/AABjAB4AAAD4//j/AABjAB8AAAD5//b/AABkAB0AAAD5//f/AABkAB4AAAD5//j/AABkAB8AAAD8//L/AAB4AAsAAAD8//P/AAB4AAwAAAD8//T/AAB4AA0AAAD8//X/AAB4AA4AAAD8//b/AAB4AA8AAAD8//f/AAB4ABAAAAD5//L/AAB1AAsAAAD6//L/AAB2AAsAAAD7//L/AAB3AAsAAAD7//P/AAB3AAwAAAD8//j/AAB4ABEAAAD2//L/AAB4AAsAAAD2//P/AAB4AAwAAAD2//T/AAB4AA0AAAD2//X/AAB4AA4AAAD2//b/AAB4AA8AAAD2//f/AAB4ABAAAAD2//j/AAB4ABEAAAD3//L/AAB1AAsAAAD4//L/AAB2AAsAAADn//L/AAB1AAsAAADl//L/AAB1AAsAAADm//L/AAB2AAsAAADj//L/AAB1AAsAAADk//L/AAB2AAsAAADx/+//AABfAB0AAADx//D/AABfAB4AAAD8/+//AABhAB0AAAD8//D/AABhAB4AAADn/+//AABfAB0AAADn//D/AABfAB4AAADr/wsAAAA0AB8AAADr/wwAAAA0ACAAAADr/w0AAAA0ACEAAADr/w4AAAA0ACIAAADr/w8AAAA0ACMAAADr/xAAAAA0ACQAAADr/xEAAAA0ACUAAADr/xIAAAA0ACYAAADr/xMAAAA0ACcAAADr/xQAAAA0ACgAAADr/xUAAAA0ACkAAADs/wsAAAA1AB8AAADs/wwAAAA1ACAAAADs/w0AAAA1ACEAAADs/w4AAAA1ACIAAADs/w8AAAA1ACMAAADs/xAAAAA1ACQAAADs/xEAAAA1ACUAAADs/xIAAAA1ACYAAADs/xMAAAA1ACcAAADs/xQAAAA1ACgAAADs/xUAAAA1ACkAAAD0/wsAAAA0AB8AAAD0/wwAAAA0ACAAAAD0/w0AAAA0ACEAAAD0/w4AAAA0ACIAAAD0/w8AAAA0ACMAAAD0/xAAAAA0ACQAAAD0/xEAAAA0ACUAAAD0/xIAAAA0ACYAAAD0/xMAAAA0ACcAAAD0/xQAAAA0ACgAAAD0/xUAAAA0ACkAAAD1/wsAAAA1AB8AAAD1/wwAAAA1ACAAAAD1/w0AAAA1ACEAAAD1/w4AAAA1ACIAAAD1/w8AAAA1ACMAAAD1/xAAAAA1ACQAAAD1/xEAAAA1ACUAAAD1/xIAAAA1ACYAAAD1/xMAAAA1ACcAAAD1/xQAAAA1ACgAAAD1/xUAAAA1ACkAAAD4/w0AAAA0AB8AAAD4/w4AAAA0ACAAAAD4/w8AAAA0ACEAAAD4/xAAAAA0ACIAAAD4/xEAAAA0ACMAAAD4/xIAAAA0ACQAAAD4/xMAAAA0ACUAAAD4/xQAAAA0ACYAAAD4/xUAAAA0ACcAAAD4/xYAAAA0ACgAAAD4/xcAAAA0ACkAAAD5/w0AAAA1AB8AAAD5/w4AAAA1ACAAAAD5/w8AAAA1ACEAAAD5/xAAAAA1ACIAAAD5/xEAAAA1ACMAAAD5/xIAAAA1ACQAAAD5/xMAAAA1ACUAAAD5/xQAAAA1ACYAAAD5/xUAAAA1ACcAAAD5/xYAAAA1ACgAAAD5/xcAAAA1ACkAAADn/w0AAAA0AB8AAADn/w4AAAA0ACAAAADn/w8AAAA0ACEAAADn/xAAAAA0ACIAAADn/xEAAAA0ACMAAADn/xIAAAA0ACQAAADn/xMAAAA0ACUAAADn/xQAAAA0ACYAAADn/xUAAAA0ACcAAADn/xYAAAA0ACgAAADn/xcAAAA0ACkAAADo/w0AAAA1AB8AAADo/w4AAAA1ACAAAADo/w8AAAA1ACEAAADo/xAAAAA1ACIAAADo/xEAAAA1ACMAAADo/xIAAAA1ACQAAADo/xMAAAA1ACUAAADo/xQAAAA1ACYAAADo/xUAAAA1ACcAAADo/xYAAAA1ACgAAADo/xcAAAA1ACkAAAD0/xYAAABZACkAAAD0/xcAAABZACoAAAD1/xYAAABaACkAAAD1/xcAAABaACoAAADr/xYAAABZACkAAADr/xcAAABZACoAAADs/xYAAABaACkAAADs/xcAAABaACoAAADI/xMAAAAWACUAAADJ/xMAAAAXACUAAADJ/xQAAAAXACYAAADK/xMAAAAYACUAAADK/xQAAAAYACYAAADA/xMAAAANACUAAADA/xQAAAANACYAAADB/xMAAAAOACUAAADB/xQAAAAOACYAAADC/xMAAAAPACUAAAA=")
 tile_set = SubResource("TileSet_oa740")
 
+[node name="BackgroundSaw" parent="." instance=ExtResource("4_c7lrb")]
+position = Vector2(-359, 329)
+
+[node name="FlyingGolem" parent="." instance=ExtResource("3_7gqir")]
+position = Vector2(-547, 345)
+
 [node name="Player" parent="." instance=ExtResource("1_iamit")]
 position = Vector2(-364, -156)
 collision_layer = 7
@@ -11010,35 +11018,6 @@ tile_set = SubResource("TileSet_5ri0u")
 tile_map_data = PackedByteArray("AADX/xkAAAAEACwAAADY/xgAAAAFACsAAAA=")
 tile_set = SubResource("TileSet_ivbe3")
 
-[node name="Visuals" type="Node" parent="."]
-
-[node name="-3" type="CanvasLayer" parent="Visuals"]
-follow_viewport_enabled = true
-follow_viewport_scale = 0.7
-
-[node name="-2" type="CanvasLayer" parent="Visuals"]
-follow_viewport_enabled = true
-follow_viewport_scale = 0.8
-
-[node name="-1" type="CanvasLayer" parent="Visuals"]
-follow_viewport_enabled = true
-follow_viewport_scale = 0.9
-
-[node name="0" type="CanvasLayer" parent="Visuals"]
-follow_viewport_enabled = true
-
-[node name="1" type="CanvasLayer" parent="Visuals"]
-follow_viewport_enabled = true
-follow_viewport_scale = 1.1
-
-[node name="2" type="CanvasLayer" parent="Visuals"]
-follow_viewport_enabled = true
-follow_viewport_scale = 1.2
-
-[node name="3" type="CanvasLayer" parent="Visuals"]
-follow_viewport_enabled = true
-follow_viewport_scale = 1.3
-
 [node name="SawBlade" parent="." instance=ExtResource("4_4iwtw")]
 position = Vector2(-359, 349)
 
@@ -11049,6 +11028,7 @@ limit_top = -320
 limit_bottom = 2215
 
 [node name="Room" parent="." instance=ExtResource("6_vs1sj")]
+visible = false
 limit_left = -2250
 limit_top = -320
 limit_bottom = 2215
@@ -11058,6 +11038,7 @@ position = Vector2(-248, -160)
 shape = SubResource("RectangleShape2D_pltwx")
 
 [node name="Room2" parent="." instance=ExtResource("6_vs1sj")]
+visible = false
 limit_left = -2250
 limit_top = -320
 limit_bottom = 2215
@@ -11067,6 +11048,7 @@ position = Vector2(-384, 224)
 shape = SubResource("RectangleShape2D_rj46a")
 
 [node name="Room3" parent="." instance=ExtResource("6_vs1sj")]
+visible = false
 limit_left = -2250
 limit_top = 442
 limit_bottom = 1216
@@ -11077,6 +11059,7 @@ position = Vector2(-416, 824)
 shape = SubResource("RectangleShape2D_7qxuk")
 
 [node name="Room4" parent="." instance=ExtResource("6_vs1sj")]
+visible = false
 limit_left = -1248
 limit_top = -320
 limit_bottom = 1072
@@ -11086,6 +11069,7 @@ position = Vector2(-968.5, 944)
 shape = SubResource("RectangleShape2D_ejv3k")
 
 [node name="Room5" parent="." instance=ExtResource("6_vs1sj")]
+visible = false
 limit_left = -1248
 limit_top = -320
 limit_bottom = 975

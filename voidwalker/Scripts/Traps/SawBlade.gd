@@ -4,30 +4,35 @@ extends StaticBody2D
 @onready var timer : Timer
 @onready var sprite : Sprite2D
 
+var saw_speed = 0.02
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	anim_player = $AnimationPlayer
 	timer = $Timer
 	sprite = $Sprite2D
+	
+	print("SawBlade texture")
+	print(sprite.global_position)
+	print(sprite.texture.get_width())
+	print(sprite.texture.get_height())
 	anim_player.play("SawBlade")
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not anim_player.is_playing():
-		pass
+	if anim_player.is_playing():
+		moving()
 
+func moving():
+	position.y += saw_speed
 
 func _on_timer_timeout() -> void:
-	timer.wait_time = randf_range(0.5, 1.0)
-	print(timer.wait_time)
-	if  anim_player.is_playing():
-			print("Stop")
-			anim_player.stop()
-	else:
-		anim_player.play("SawBlade")
-		print("Play")
+	anim_player.play("SawBlade")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body)
+	print(body.name)
+	if body.name == "End" or body.name == "Start":
+		saw_speed *= -1
+		anim_player.stop()
+		timer.start()

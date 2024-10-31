@@ -26,8 +26,6 @@ func _physics_process(delta: float) -> void:
 	
 	apply_limit(delta)
 	
-	print(limit_left)
-	
 func calculate_target_position(room_center: Vector2, room_size: Vector2) -> Vector2:
 	var x_margin: float = (room_size.x - zoom_view_size.x) / 2
 	var y_margin: float = (room_size.y - zoom_view_size.y) / 2

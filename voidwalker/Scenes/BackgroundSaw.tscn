@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://db2ekr5xklrqs"]
+
+[ext_resource type="Texture2D" uid="uid://be6q10d4r50ml" path="res://AnimationSheet/16x16 traps.png" id="1_nwcva"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mddly"]
+size = Vector2(6, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v1l5"]
+size = Vector2(6, 1)
+
+[node name="BackgroundSaw" type="Node2D"]
+light_mask = 524288
+visibility_layer = 524288
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 12)
+scale = Vector2(1, 1.375)
+texture = ExtResource("1_nwcva")
+hframes = 12
+vframes = 15
+frame = 120
+
+[node name="Start" type="StaticBody2D" parent="."]
+collision_layer = 8388608
+collision_mask = 8388608
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_mddly")
+
+[node name="End" type="StaticBody2D" parent="."]
+collision_layer = 8388608
+collision_mask = 8388608
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
+position = Vector2(0, 55)
+shape = SubResource("RectangleShape2D_3v1l5")
