@@ -12,7 +12,14 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	for child in body.get_children():
 		if child is Damageable:
-			child.hit(damage)
+			var direciton_to_damageable = (body.global_position - get_parent().global_position)
+			var direction_sign = sign(direciton_to_damageable.x)
+			
+			if direction_sign > 0:
+				child.hit(damage, Vector2.RIGHT)
+			elif direction_sign < 0:
+				child.hit(damage, Vector2.LEFT)			
+				
 			print_debug(body.name + " took " + str(damage))
 			
 	print(body.name)

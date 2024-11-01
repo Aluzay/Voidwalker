@@ -56,11 +56,10 @@ func _on_timer_timeout() -> void:
 
 
 func _on_room_detector_area_entered(area: Area2D) -> void:
-	var collision_shape : CollisionShape2D = area.get_children()[0]
-	current_room = collision_shape
-	print(collision_shape.global_position)
-	print(collision_shape.shape.size)
-	RoomTransitor.change_room(collision_shape.global_position, collision_shape.shape.size * 2, area)
+	if area is Room:
+		var collision_shape : CollisionShape2D = area.get_children()[0]
+		current_room = collision_shape
+		RoomTransitor.change_room(collision_shape.global_position, collision_shape.shape.size * 2, area)
 	
 func _on_room_detector_area_exited(area: Area2D) -> void:
 	var collision_shape : CollisionShape2D = area.get_children()[0]

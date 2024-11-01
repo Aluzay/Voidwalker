@@ -1,5 +1,6 @@
-[gd_scene load_steps=53 format=3 uid="uid://dc10jg6oq00b5"]
+[gd_scene load_steps=57 format=3 uid="uid://dc10jg6oq00b5"]
 
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_g0kqv"]
 [ext_resource type="Texture2D" uid="uid://ds85etxb4tet8" path="res://AnimationSheet/Golem_2/Red/No_Swoosh_VFX/Golem_02_attack.png" id="1_m27c0"]
 [ext_resource type="Texture2D" uid="uid://7yfka3rvc13t" path="res://AnimationSheet/Golem_2/Red/No_Swoosh_VFX/Golem_02_die.png" id="2_vr7if"]
 [ext_resource type="Texture2D" uid="uid://crysn6lf1560x" path="res://AnimationSheet/Golem_2/Red/No_Swoosh_VFX/Golem_02_fly.png" id="3_yb2uk"]
@@ -7,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://d2b23pnu6uwqo" path="res://AnimationSheet/Golem_2/Red/No_Swoosh_VFX/Golem_02_idle.png" id="5_ye6i6"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.gd" id="6_3kmnr"]
 [ext_resource type="Script" path="res://Scripts/Damageable.gd" id="7_vrb4u"]
+[ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemIdle.gd" id="8_bn6jv"]
+[ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemHurt.gd" id="9_e7cg6"]
+[ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemDie.gd" id="10_f3bg7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnk6v"]
 atlas = ExtResource("1_m27c0")
@@ -257,7 +261,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2n3j6")
 }],
-"loop": true,
+"loop": false,
 "name": &"Die",
 "speed": 5.0
 }, {
@@ -303,7 +307,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_trd42")
 }],
-"loop": true,
+"loop": false,
 "name": &"Hurt",
 "speed": 5.0
 }, {
@@ -343,17 +347,33 @@ height = 34.0
 
 [node name="FlyingGolem" type="CharacterBody2D"]
 motion_mode = 1
+script = ExtResource("1_g0kqv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lmjh1")
-animation = &"Attack"
+animation = &"Die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_hxnuy")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_3kmnr")
+initial_state = NodePath("FlyingGolemIdle")
+
+[node name="FlyingGolemIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("flying_golem")]
+script = ExtResource("8_bn6jv")
+flying_golem = NodePath("../..")
+
+[node name="FlyingGolemHurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("damageable", "flying_golem")]
+script = ExtResource("9_e7cg6")
+damageable = NodePath("../../Damageable")
+flying_golem = NodePath("../..")
+knockback_speed = 30.0
+
+[node name="FlyingGolemDie" type="Node" parent="StateMachine" node_paths=PackedStringArray("flying_golem")]
+script = ExtResource("10_f3bg7")
+flying_golem = NodePath("../..")
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("7_vrb4u")

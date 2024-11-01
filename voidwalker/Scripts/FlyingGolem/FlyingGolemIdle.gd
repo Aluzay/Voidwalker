@@ -1,11 +1,16 @@
-extends Node
+extends State
 
+class_name FlyingGolemIdle
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var flying_golem : Enemy
 
+var anim_enemy : AnimatedSprite2D
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func Enter():
+	if anim_enemy:
+		anim_enemy.play("Idle")
+	
+func Update(delta: float):
+	if not anim_enemy:
+		anim_enemy = flying_golem.get_animation_enemy()
+	#Transitioned.emit(self, "flyinggolemhurt")

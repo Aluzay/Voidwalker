@@ -2,6 +2,7 @@ extends Node
 class_name State
 
 signal Transitioned
+signal interrupt_state(new_state_name : String)
 
 func Handle_Input(_event: InputEvent):
 	pass
