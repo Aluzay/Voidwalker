@@ -11,11 +11,6 @@ func _ready() -> void:
 	anim_player = $AnimationPlayer
 	timer = $Timer
 	sprite = $Sprite2D
-	
-	print("SawBlade texture")
-	print(sprite.global_position)
-	print(sprite.texture.get_width())
-	print(sprite.texture.get_height())
 	anim_player.play("SawBlade")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bolihdcq7boeg"]
+[gd_scene load_steps=27 format=4 uid="uid://bolihdcq7boeg"]
 
 [ext_resource type="PackedScene" uid="uid://c433jbwbf30gy" path="res://Scenes/Player.tscn" id="1_iamit"]
 [ext_resource type="Texture2D" uid="uid://djuqjalvb6oie" path="res://Tiles/main_lev_build.png" id="2_1mntr"]
@@ -1804,6 +1804,7 @@ texture = ExtResource("2_1mntr")
 [sub_resource type="TileSet" id="TileSet_8wwcx"]
 physics_layer_0/collision_layer = 0
 physics_layer_0/collision_mask = 0
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_fg3oi")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b1io4"]
@@ -3599,6 +3600,7 @@ texture = ExtResource("2_1mntr")
 73:71/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_lrydh"]
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_b1io4")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_223dq"]
@@ -5413,6 +5415,7 @@ texture = ExtResource("2_1mntr")
 [sub_resource type="TileSet" id="TileSet_oa740"]
 physics_layer_0/collision_layer = 0
 physics_layer_0/collision_mask = 0
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_223dq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ed30i"]
@@ -7328,6 +7331,7 @@ texture = ExtResource("2_1mntr")
 [sub_resource type="TileSet" id="TileSet_6rvpx"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_ed30i")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d1ft6"]
@@ -9162,6 +9166,7 @@ texture = ExtResource("2_1mntr")
 [sub_resource type="TileSet" id="TileSet_5ri0u"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_d1ft6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qvawb"]
@@ -10978,6 +10983,11 @@ size = Vector2(239, 192)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ik8mo"]
 size = Vector2(176, 640)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_f2av8"]
+vertices = PackedVector2Array(217.211, 83.0469, 479.813, 1412.88, -1258.36, 1397.06, -1507.23, 492.438, -1003.23, -360.102, 119.898, -380.844)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(227, 81, 128, -391, -1009, -370, -1518, 491, -1266, 1407, 492, 1423)])
+
 [node name="Level1" type="Node2D"]
 
 [node name="BlackBackground" type="TileMapLayer" parent="."]
@@ -11077,6 +11087,9 @@ limit_bottom = 975
 [node name="CollisionShape2D" parent="Room5" index="0"]
 position = Vector2(-1128, 624)
 shape = SubResource("RectangleShape2D_ik8mo")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_f2av8")
 
 [editable path="Player"]
 [editable path="SawBlade"]
