@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dc10jg6oq00b5"]
+[gd_scene load_steps=59 format=3 uid="uid://dc10jg6oq00b5"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_g0kqv"]
 [ext_resource type="Texture2D" uid="uid://ds85etxb4tet8" path="res://AnimationSheet/Golem_2/Red/No_Swoosh_VFX/Golem_02_attack.png" id="1_m27c0"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemIdle.gd" id="8_bn6jv"]
 [ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemHurt.gd" id="9_e7cg6"]
 [ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemDie.gd" id="10_f3bg7"]
+[ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemFly.gd" id="11_rttw0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnk6v"]
 atlas = ExtResource("1_m27c0")
@@ -345,8 +346,12 @@ animations = [{
 radius = 17.0
 height = 34.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_80bxn"]
+radius = 180.0
+
 [node name="FlyingGolem" type="CharacterBody2D"]
-motion_mode = 1
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_g0kqv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -375,5 +380,22 @@ knockback_speed = 30.0
 script = ExtResource("10_f3bg7")
 flying_golem = NodePath("../..")
 
+[node name="FlyingGolemFly" type="Node" parent="StateMachine" node_paths=PackedStringArray("flying_golem")]
+script = ExtResource("11_rttw0")
+flying_golem = NodePath("../..")
+
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("7_vrb4u")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_80bxn")
+
+[node name="RandomMovement" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="timeout" from="RandomMovement" to="." method="_on_random_movement_timeout"]

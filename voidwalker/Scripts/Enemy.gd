@@ -4,8 +4,11 @@ class_name Enemy
 
 @export var movement_speed : float = 30.0
 
+@onready var anim_sprite : AnimatedSprite2D = $AnimatedSprite2D 
+
 var anim_enemy : AnimatedSprite2D
 var chase_player : bool = false
+var direction : Vector2
 
 const JUMP_VELOCITY = -400.0
 
@@ -18,20 +21,29 @@ func get_animation_enemy () -> AnimatedSprite2D:
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	#if not is_on_floor():
-		#velocity += get_gravity() * delta
-#
-	## Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
-#
-	## Get the input direction and handle the movement/deceleration.
-	## As good practice, you should replace UI actions with custom gameplay actions.
-	#var direction := Input.get_axis("ui_left", "ui_right")
-	#if direction:
-		#velocity.x = direction * SPEED
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	
+	if direction.x == -1:
+		anim_sprite.flip_h = true
+	elif direction.x == 1:
+		anim_sprite.flip_h = false
+	
 	move_and_slide()
+
+
+func _on_player_detection_body_entered(body: Node2D) -> void:
+	if body is Player:
+		chase_player = true
+	
+func _on_player_detection_body_exited(body: Node2D) -> void:
+	if body is Player:
+		chase_player = false
+
+func _on_random_movement_timeout() -> void:
+	$RandomMovement.wait_time = choose([1.0, 1.5, 2.0])
+	if !chase_player:
+		direction = choose([Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP])
+	
+func choose(array : Array):
+	array.shuffle()
+	
+	return array.front()

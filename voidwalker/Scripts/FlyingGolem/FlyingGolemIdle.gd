@@ -13,4 +13,5 @@ func Enter():
 func Update(delta: float):
 	if not anim_enemy:
 		anim_enemy = flying_golem.get_animation_enemy()
-	#Transitioned.emit(self, "flyinggolemhurt")
+	if flying_golem.direction:
+		Transitioned.emit(self, "flyinggolemfly")
