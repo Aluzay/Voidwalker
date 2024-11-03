@@ -22,7 +22,6 @@ func Update(delta: float):
 			Transitioned.emit(self, "playerwalk")
 		
 		if Input.is_action_just_pressed("Attack") and player.is_on_floor():
-			print("Attack")
 			Transitioned.emit(self, "playerattack")
 		
 		if Input.is_action_just_pressed("ui_accept"):

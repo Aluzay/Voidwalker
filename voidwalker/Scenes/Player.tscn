@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c433jbwbf30gy"]
+[gd_scene load_steps=31 format=3 uid="uid://c433jbwbf30gy"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_esbea"]
 [ext_resource type="Texture2D" uid="uid://bp5jw1qtk7hx" path="res://AnimationSheet/PlayerSheet.png" id="2_csmvn"]
@@ -11,9 +11,11 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerDash.gd" id="9_m02tr"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerWalk.gd" id="9_r3uj6"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerDoubleJump.gd" id="10_n1o6u"]
-[ext_resource type="Script" path="res://Scripts/Attack.gd" id="12_ngi1g"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAttack.gd" id="12_yrwvf"]
-[ext_resource type="Script" path="res://Scripts/FacingCollisionShape.gd" id="14_mnynt"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerHurt.gd" id="13_ae36t"]
+[ext_resource type="PackedScene" uid="uid://c01umt0tn0s71" path="res://AttackArea.tscn" id="13_tlu3n"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerDie.gd" id="14_3faiw"]
+[ext_resource type="PackedScene" uid="uid://b8i0dumpgbwbe" path="res://Scenes/Damageable.tscn" id="14_dqlb2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24h6m"]
 size = Vector2(16, 41)
@@ -76,10 +78,10 @@ tracks/4/path = NodePath("AttackArea:monitoring")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.466667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true, false, false]
 }
 
 [sub_resource type="Animation" id="Animation_hq3jq"]
@@ -459,11 +461,117 @@ tracks/3/keys = {
 "values": [252, 253, 254, 255, 256, 257]
 }
 
+[sub_resource type="Animation" id="Animation_nwp81"]
+resource_name = "Hurt"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_csmvn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [44]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [504, 505, 506, 507, 508, 509]
+}
+
+[sub_resource type="Animation" id="Animation_3ucao"]
+resource_name = "Die"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_csmvn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [44]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [518, 519, 520, 521, 522, 523, 524, 525, 526]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hqtqw"]
 _data = {
 "Attack": SubResource("Animation_i7b37"),
 "Dash": SubResource("Animation_hq3jq"),
+"Die": SubResource("Animation_3ucao"),
 "Falling": SubResource("Animation_iy88o"),
+"Hurt": SubResource("Animation_nwp81"),
 "Idle": SubResource("Animation_k4sbi"),
 "Jump": SubResource("Animation_osjsg"),
 "RESET": SubResource("Animation_7akpq"),
@@ -478,10 +586,8 @@ point_count = 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mo7b2"]
 size = Vector2(0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_05ffp"]
-size = Vector2(8, 7)
-
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 9
 script = ExtResource("1_esbea")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -539,6 +645,17 @@ player = NodePath("../..")
 script = ExtResource("12_yrwvf")
 player = NodePath("../..")
 
+[node name="PlayerHurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("damageable", "player")]
+script = ExtResource("13_ae36t")
+damageable = NodePath("../../Damageable")
+player = NodePath("../..")
+
+[node name="PlayerDie" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("14_3faiw")
+player = NodePath("../..")
+
+[node name="Damageable" parent="." instance=ExtResource("14_dqlb2")]
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.8
 autostart = true
@@ -563,20 +680,11 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDetector"]
 shape = SubResource("RectangleShape2D_mo7b2")
 
-[node name="AttackArea" type="Area2D" parent="." node_paths=PackedStringArray("player", "facing_shape")]
-monitoring = false
-script = ExtResource("12_ngi1g")
-player = NodePath("..")
-facing_shape = NodePath("CollisionShape2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(22, 13.5)
-shape = SubResource("RectangleShape2D_05ffp")
-script = ExtResource("14_mnynt")
-facing_left_position = Vector2(-22, 0)
-facing_right_position = Vector2(22, 0)
+[node name="AttackArea" parent="." node_paths=PackedStringArray("character") instance=ExtResource("13_tlu3n")]
+character = NodePath("..")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="RoomDetector" to="." method="_on_room_detector_area_entered"]
 [connection signal="area_exited" from="RoomDetector" to="." method="_on_room_detector_area_exited"]
-[connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]
+
+[editable path="AttackArea"]

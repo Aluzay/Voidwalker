@@ -12,7 +12,6 @@ func Enter():
 func Update(delta: float):
 	if player:
 		if not player.is_on_floor() and not player.stair_collider.is_colliding() and not player.stair_collider2.is_colliding():
-			print(player.stair_collider2.is_colliding())
 			Transitioned.emit(self, "playerfalling")
 			return
 			

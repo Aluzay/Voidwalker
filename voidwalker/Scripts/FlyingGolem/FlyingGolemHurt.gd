@@ -6,7 +6,7 @@ class_name FlyingGolemHurt
 @export var flying_golem : Enemy
 @export var knockback_speed : float = 100.0
 
-var anim_enemy : AnimatedSprite2D
+var anim_enemy : AnimationPlayer
 
 func _ready() -> void:
 	damageable.connect("on_hit", on_damagable_hit)
@@ -14,7 +14,6 @@ func _ready() -> void:
 func Enter():
 	if flying_golem:
 		anim_enemy = flying_golem.get_animation_enemy()
-	print("Enter")
 	anim_enemy.play("Hurt")
 
 func Update(delta: float):

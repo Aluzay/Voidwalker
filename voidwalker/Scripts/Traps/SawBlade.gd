@@ -24,9 +24,7 @@ func moving():
 func _on_timer_timeout() -> void:
 	anim_player.play("SawBlade")
 
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body.name)
 	if body.name == "End" or body.name == "Start":
 		saw_speed *= -1
 		anim_player.stop()

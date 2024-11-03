@@ -62,6 +62,8 @@ _data = {
 radius = 14.0357
 
 [node name="SawBlade" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 9
 script = ExtResource("1_a4imr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -19,6 +19,7 @@ var previous_room
 signal facing_direction_changed(facing_right : bool)
 
 func _ready() -> void:
+	Global.player = self
 	anim_player = $AnimationPlayer
 	sprite = $Sprite2D
 	anim_player.play("Idle")
@@ -53,7 +54,6 @@ func _on_timer_timeout() -> void:
 		can_dash = !can_dash
 	if not can_jump_on_wall:
 		can_jump_on_wall = !can_jump_on_wall
-
 
 func _on_room_detector_area_entered(area: Area2D) -> void:
 	if area is Room:

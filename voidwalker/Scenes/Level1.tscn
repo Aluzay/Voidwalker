@@ -11011,7 +11011,7 @@ position = Vector2(-547, 345)
 [node name="Player" parent="." instance=ExtResource("1_iamit")]
 position = Vector2(-364, -156)
 collision_layer = 7
-collision_mask = 7
+collision_mask = 15
 
 [node name="PlayerWallSlide" parent="Player/StateMachine" index="5"]
 script = ExtResource("3_tmrjm")
@@ -11092,6 +11092,7 @@ shape = SubResource("RectangleShape2D_ik8mo")
 navigation_polygon = SubResource("NavigationPolygon_f2av8")
 
 [editable path="Player"]
+[editable path="Player/AttackArea"]
 [editable path="SawBlade"]
 [editable path="Room"]
 [editable path="Room2"]

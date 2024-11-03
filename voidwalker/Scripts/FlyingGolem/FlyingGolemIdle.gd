@@ -4,7 +4,7 @@ class_name FlyingGolemIdle
 
 @export var flying_golem : Enemy
 
-var anim_enemy : AnimatedSprite2D
+var anim_enemy : AnimationPlayer
 
 func Enter():
 	if anim_enemy:

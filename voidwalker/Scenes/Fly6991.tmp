@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dc10jg6oq00b5"]
+[gd_scene load_steps=24 format=3 uid="uid://dc10jg6oq00b5"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_g0kqv"]
 [ext_resource type="Texture2D" uid="uid://ds85etxb4tet8" path="res://AnimationSheet/Golem_2/Red/No_Swoosh_VFX/Golem_02_attack.png" id="1_m27c0"]
@@ -7,13 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bq2mpwciaffxj" path="res://AnimationSheet/Golem_2/Red/No_Swoosh_VFX/Golem_02_hurt.png" id="4_4c8oa"]
 [ext_resource type="Texture2D" uid="uid://d2b23pnu6uwqo" path="res://AnimationSheet/Golem_2/Red/No_Swoosh_VFX/Golem_02_idle.png" id="5_ye6i6"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.gd" id="6_3kmnr"]
-[ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemAttack.gd" id="7_mnumk"]
+[ext_resource type="Script" path="res://Scripts/Damageable.gd" id="7_vrb4u"]
 [ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemIdle.gd" id="8_bn6jv"]
-[ext_resource type="PackedScene" uid="uid://b8i0dumpgbwbe" path="res://Scenes/Damageable.tscn" id="8_ckyxf"]
 [ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemHurt.gd" id="9_e7cg6"]
 [ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemDie.gd" id="10_f3bg7"]
-[ext_resource type="Script" path="res://Scripts/Attack.gd" id="10_msm4q"]
-[ext_resource type="Script" path="res://Scripts/FacingCollisionShape.gd" id="11_m70og"]
 [ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemFly.gd" id="11_rttw0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hxnuy"]
@@ -26,8 +23,8 @@ radius = 135.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rpw1o"]
 radius = 155.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyxii"]
-size = Vector2(24, 35)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12tpc"]
+size = Vector2(16, 41)
 
 [sub_resource type="Animation" id="Animation_hya5t"]
 resource_name = "Attack"
@@ -80,22 +77,9 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Attack/Area2D:monitoring")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.7, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, true, true, false]
-}
 
-[sub_resource type="Animation" id="Animation_y1pty"]
-resource_name = "Die"
-length = 1.2
+[sub_resource type="Animation" id="Animation_yyvwj"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -106,7 +90,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_vr7if")]
+"values": [ExtResource("1_m27c0")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -118,7 +102,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [12]
+"values": [11]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -139,10 +123,63 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_if8dr"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ye6i6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_ugpkm"]
@@ -250,10 +287,9 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_if8dr"]
-resource_name = "Idle"
-length = 0.8
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_y1pty"]
+resource_name = "Die"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -264,7 +300,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_ye6i6")]
+"values": [ExtResource("2_vr7if")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -276,7 +312,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [12]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -297,73 +333,10 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_yyvwj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_m27c0")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [11]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Attack/Area2D:monitoring")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fweo"]
@@ -410,16 +383,14 @@ flying_golem = NodePath("../..")
 script = ExtResource("11_rttw0")
 flying_golem = NodePath("../..")
 
-[node name="FlyingGolemAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("flying_golem")]
-script = ExtResource("7_mnumk")
-flying_golem = NodePath("../..")
-
-[node name="Damageable" parent="." instance=ExtResource("8_ckyxf")]
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("7_vrb4u")
 
 [node name="RandomMovement" type="Timer" parent="."]
 autostart = true
 
 [node name="Navigation" type="Node2D" parent="."]
+visible = false
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
 debug_enabled = true
@@ -432,7 +403,6 @@ autostart = true
 visible = false
 
 [node name="AggroRange" type="Area2D" parent="Aggro"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Aggro/AggroRange"]
 position = Vector2(0, 8)
@@ -447,17 +417,11 @@ debug_color = Color(0.954422, 2.40654e-06, 0.548506, 0.42)
 
 [node name="Attack" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="Attack" node_paths=PackedStringArray("character", "facing_shape")]
-script = ExtResource("10_msm4q")
-character = NodePath("../..")
-facing_shape = NodePath("CollisionShape2D")
+[node name="AttackArea" type="Area2D" parent="Attack"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/Area2D"]
-position = Vector2(32, 9.5)
-shape = SubResource("RectangleShape2D_pyxii")
-script = ExtResource("11_m70og")
-facing_left_position = Vector2(-37.5, 8)
-facing_right_position = Vector2(37.5, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/AttackArea"]
+position = Vector2(44, 8)
+shape = SubResource("RectangleShape2D_12tpc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_m27c0")
@@ -472,4 +436,3 @@ libraries = {
 [connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
 [connection signal="body_entered" from="Aggro/AggroRange" to="." method="_on_aggro_range_body_entered"]
 [connection signal="body_exited" from="Aggro/DeAggroRange" to="." method="_on_de_aggro_range_body_exited"]
-[connection signal="body_entered" from="Attack/Area2D" to="Attack/Area2D" method="_on_body_entered"]

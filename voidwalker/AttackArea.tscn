@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c01umt0tn0s71"]
+
+[ext_resource type="Script" path="res://Scripts/Attack.gd" id="1_jlys8"]
+[ext_resource type="Script" path="res://Scripts/FacingCollisionShape.gd" id="2_6rp0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05ffp"]
+size = Vector2(8, 7)
+
+[node name="AttackArea" type="Area2D" node_paths=PackedStringArray("facing_shape")]
+collision_mask = 3
+monitoring = false
+script = ExtResource("1_jlys8")
+facing_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22, 13.5)
+shape = SubResource("RectangleShape2D_05ffp")
+script = ExtResource("2_6rp0o")
+facing_left_position = Vector2(-22, 0)
+facing_right_position = Vector2(22, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

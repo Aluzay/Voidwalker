@@ -4,12 +4,13 @@ class_name FlyingGolemDie
 
 @export var flying_golem : Enemy
 
-var anim_enemy : AnimatedSprite2D
+var anim_enemy : AnimationPlayer
 var coll_enemy : CollisionShape2D
 
 func Enter():
 	if flying_golem:
 		anim_enemy = flying_golem.get_animation_enemy()
+	flying_golem.velocity = Vector2.ZERO
 	anim_enemy.play("Die")	
 	coll_enemy = flying_golem.get_node("CollisionShape2D")
 	
