@@ -16,6 +16,7 @@ func Enter():
 		anim_player = player.get_animation_player()
 	anim_player.play("Dash")
 	player.can_dash = false
+	player.dash.emitting = true
 	dash_start_position = player.position.x
 		
 func Update(delta: float):	
@@ -32,3 +33,6 @@ func Update(delta: float):
 			Transitioned.emit(self, "playerfalling")
 		else:
 			Transitioned.emit(self, "playerfalling")
+
+func Exit():
+	player.dash.emitting = false
