@@ -73,3 +73,10 @@ func _on_room_detector_area_exited(area: Area2D) -> void:
 	else:
 		if previous_room:
 			RoomTransitor.change_room(previous_room.global_position, previous_room.shape.size * 2, area)
+
+
+func _on_death_area_body_entered(body: Node2D) -> void:
+	var damage : int = 200
+	for child in body.get_children():
+		if child is Damageable:
+			child.hit(damage, Vector2.ZERO)

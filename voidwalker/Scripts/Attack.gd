@@ -11,7 +11,6 @@ func _ready() -> void:
 	character.connect("facing_direction_changed", _on_player_facing_direction_changed)
 
 func _on_body_entered(body: Node2D) -> void:
-	monitoring = false
 	for child in body.get_children():
 		if child is Damageable:
 			var direciton_to_damageable = (body.global_position - get_parent().global_position)
@@ -23,7 +22,8 @@ func _on_body_entered(body: Node2D) -> void:
 				child.hit(damage, Vector2.LEFT)			
 			
 			print_debug(body.name + " took " + str(damage))	
-
+	set_deferred("monitoring", false)
+	
 func _on_player_facing_direction_changed(facing_right : bool):
 	if facing_right:
 		facing_shape.position.x = facing_shape.facing_right_position.x

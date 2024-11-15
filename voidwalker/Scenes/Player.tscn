@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c433jbwbf30gy"]
+[gd_scene load_steps=35 format=3 uid="uid://dkum6w3w2njd5"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_esbea"]
 [ext_resource type="Texture2D" uid="uid://bp5jw1qtk7hx" path="res://AnimationSheet/PlayerSheet.png" id="2_csmvn"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerDoubleJump.gd" id="10_n1o6u"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAttack.gd" id="12_yrwvf"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHurt.gd" id="13_ae36t"]
-[ext_resource type="PackedScene" uid="uid://c01umt0tn0s71" path="res://AttackArea.tscn" id="13_tlu3n"]
+[ext_resource type="PackedScene" uid="uid://c01umt0tn0s71" path="res://Scenes/AttackArea.tscn" id="13_tlu3n"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerDie.gd" id="14_3faiw"]
 [ext_resource type="PackedScene" uid="uid://b8i0dumpgbwbe" path="res://Scenes/Damageable.tscn" id="14_dqlb2"]
 [ext_resource type="Texture2D" uid="uid://caabh7lhsme7k" path="res://AnimationSheet/PlayerDashSheet.png" id="17_kws65"]
@@ -595,8 +595,8 @@ uniform int particles_anim_h_frames;
 uniform int particles_anim_v_frames;
 uniform bool particles_anim_loop;
 uniform float fade_amount;
-uniform vec2 ghost_offset = vec2(0.05, 0.05); // Décalage pour l'effet ghost shadow
-uniform float ghost_opacity = 0.3; // Opacité de l'ombre fantôme
+uniform vec2 ghost_offset = vec2(0.05, 0.05);
+uniform float ghost_opacity = 0.3; 
 
 // Variable varying pour transmettre la progression de l'animation
 varying float animation_progress;
@@ -727,6 +727,7 @@ script = ExtResource("14_3faiw")
 player = NodePath("../..")
 
 [node name="Damageable" parent="." instance=ExtResource("14_dqlb2")]
+health = 200.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.8

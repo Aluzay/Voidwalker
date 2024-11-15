@@ -4,8 +4,8 @@ class_name PlayerWallJump
 @export var player: Player
 var anim_player : AnimationPlayer
 var control_timer = 0
-const JUMP_VELOCITY = -400.0
-const BACK_VELOCITY = 250.0
+const JUMP_VELOCITY = -350.0
+const BACK_VELOCITY = 300.0
 const DECAY_RATE = 2000.0
 const SPEED = 300.0
 const CONTROL_DELAY = 0.3
@@ -36,9 +36,12 @@ func Update(delta: float):
 	else:
 		if player.velocity.x != 0:
 			player.velocity.x = move_toward(player.velocity.x, 0, DECAY_RATE * delta)	
-				
+	
 	if (player.velocity.y > 0):
 		Transitioned.emit(self, "playerfalling")
 		
 	if Input.is_action_just_pressed("Dash") and player.direction and player.can_dash:
 		Transitioned.emit(self, "playerdash")
+
+func Exit():
+	player.can_double_jump = true
