@@ -3,8 +3,8 @@ extends StaticBody2D
 @onready var anim_player : AnimationPlayer
 @onready var timer : Timer
 @onready var sprite : Sprite2D
+@export var saw_speed = 0.02
 
-var saw_speed = 0.02
 var damage = 20
 
 # Called when the node enters the scene tree for the first time.

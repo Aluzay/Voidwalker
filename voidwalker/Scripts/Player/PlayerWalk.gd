@@ -19,7 +19,10 @@ func Update(delta: float):
 		
 		if player.direction:
 			player.velocity.x = player.direction * SPEED
-			anim_player.play("Walk")
+			if not player.is_using_weapon:
+				anim_player.play("Walk")
+			else:
+				anim_player.play("WalkWithWeapon")
 		else:
 			Transitioned.emit(self, "playeridle")
 			

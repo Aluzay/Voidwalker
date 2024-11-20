@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://be6q10d4r50ml" path="res://AnimationSheet/16x16 traps.png" id="1_ln3ce"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_olma4"]
-radius = 17.0294
+radius = 13.0
 
 [sub_resource type="GDScript" id="GDScript_1xdti"]
 script/source = "extends CollisionShape2D
@@ -59,7 +59,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfb4u"]
-radius = 18.0278
+radius = 14.0
 
 [node name="SawBlade" type="StaticBody2D"]
 collision_layer = 8
@@ -72,7 +72,6 @@ hframes = 12
 vframes = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_olma4")
 script = SubResource("GDScript_1xdti")

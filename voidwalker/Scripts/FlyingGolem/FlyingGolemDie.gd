@@ -19,4 +19,11 @@ func Update(delta: float):
 		coll_enemy.set_disabled(true)
 		
 	if not anim_enemy.is_playing():
+			if flying_golem is FlyingGolem:
+				print("FlyingGolem killed")
+				Global.emit_signal("enemy_killed")
+			elif flying_golem is FlyingGolemBoss:
+				print("FlyingGolemBoss killed")
+				Global.emit_signal("boss_killed")
+				
 			flying_golem.queue_free()

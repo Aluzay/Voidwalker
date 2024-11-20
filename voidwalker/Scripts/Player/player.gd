@@ -16,25 +16,21 @@ var can_double_jump = true
 var direction = 0
 var current_room
 var previous_room
+var enemies_killed : int = 0
+var is_using_weapon : bool = false
 
 signal facing_direction_changed(facing_right : bool)
 
 func _ready() -> void:
 	dash.emitting = false
 	Global.player = self
+	Global.connect("enemy_killed", _on_enemy_killed)
 	anim_player = $AnimationPlayer
 	sprite = $Sprite2D
 	anim_player.play("Idle")
 
 func _physics_process(delta: float) -> void:
 	direction = Input.get_axis("Left", "Right")
-	
-	if (stair_collider.is_colliding() or stair_collider2.is_colliding()) and direction:
-		var collision = stair_collider.get_collider()
-		
-		if collision != null:
-			if collision.name == "StairTiles":
-				velocity.y = -100
 	
 	if (direction == 1):
 		sprite.flip_h = false
@@ -52,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	
 func get_animation_player () -> AnimationPlayer:
 	return anim_player
-
+	
 func _on_timer_timeout() -> void:
 	if not can_dash:
 		can_dash = !can_dash
@@ -80,3 +76,7 @@ func _on_death_area_body_entered(body: Node2D) -> void:
 	for child in body.get_children():
 		if child is Damageable:
 			child.hit(damage, Vector2.ZERO)
+
+func _on_enemy_killed() -> void:
+	enemies_killed += 1
+	print(enemies_killed)

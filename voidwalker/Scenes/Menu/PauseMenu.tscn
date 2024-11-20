@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cju36ve4i5xqe"]
 
-[ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_de54v"]
+[ext_resource type="Script" path="res://Scripts/Menu/PauseMenu.gd" id="1_de54v"]
 [ext_resource type="Shader" path="res://PauseMenu.gdshader" id="2_jlwon"]
 [ext_resource type="FontFile" uid="uid://cnpkcbpgi1f8p" path="res://Font/Daydream.ttf" id="3_rins5"]
 
@@ -35,9 +35,17 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyvw4"]
 bg_color = Color(0.545098, 0.701961, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4eobw"]
 bg_color = Color(0.494118, 0.65098, 0.878431, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f70ih"]
 bg_color = Color(0.647059, 0.784314, 1, 1)

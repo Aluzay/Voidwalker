@@ -12,7 +12,11 @@ func Enter():
 		
 	if player:
 		player.velocity.y = JUMP_VELOCITY
-		anim_player.play("Jump")
+		if not player.is_using_weapon:
+			anim_player.play("Jump")
+		else:
+			anim_player.play("JumpWithWeapon")
+			
 		player.can_double_jump = true
 
 func Update(delta: float):	
@@ -27,6 +31,6 @@ func Update(delta: float):
 			
 	if (player.velocity.y > 0):
 		Transitioned.emit(self, "playerfalling")
-		
+	
 	if Input.is_action_just_pressed("Dash") and player.direction and player.can_dash:
 		Transitioned.emit(self, "playerdash")

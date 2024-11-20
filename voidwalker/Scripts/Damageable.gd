@@ -2,6 +2,7 @@ extends Node
 class_name Damageable
 
 @export var health : float = 20
+@export var max_health = 20
 
 signal on_hit(node : Node, damage_taken : int, knockback_direction : Vector2)
 

@@ -20,8 +20,6 @@ func Update(delta: float):
 	if not player.is_on_floor():
 		Transitioned.emit(self, "playerfalling")
 	
-	
-	
 	if not anim_player.is_playing():
 		Transitioned.emit(self, "playeridle")
 

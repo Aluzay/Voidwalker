@@ -16,4 +16,4 @@ func Enter():
 	
 func Update(delta: float):		
 	if not anim_player.is_playing():
-			get_tree().quit()
+			get_tree().change_scene_to_file("res://Scenes/Menu/MainMenu.tscn")

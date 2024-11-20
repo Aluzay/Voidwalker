@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cwkb14pqgpac7"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_6earn"]
+[ext_resource type="Script" path="res://Scripts/Menu/MainMenu.gd" id="1_6earn"]
 [ext_resource type="Texture2D" uid="uid://bomcirlrpmapp" path="res://Images/13109aa1-9a41-41f7-9aa3-103a9627732d.webp" id="1_yweno"]
 [ext_resource type="FontFile" uid="uid://cnpkcbpgi1f8p" path="res://Font/Daydream.ttf" id="2_vd4ea"]
 

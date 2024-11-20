@@ -9,7 +9,11 @@ func Enter():
 	if not anim_player:
 		if player:
 			anim_player = player.get_animation_player()
-	anim_player.play("Attack")
+			
+	if not player.is_using_weapon:
+		anim_player.play("Attack")
+	else:
+		anim_player.play("AttackWithWeapon")
 			
 func Update(delta: float):
 	if player.direction:

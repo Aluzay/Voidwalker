@@ -9,7 +9,11 @@ const SPEED = 300.0
 func Enter():
 	if not anim_player:
 		anim_player = player.get_animation_player()
-	anim_player.play("Falling")
+		
+	if not player.is_using_weapon:
+		anim_player.play("Falling")
+	else:
+		anim_player.play("FallingWithWeapon")	
 
 func Update(delta: float):	
 	if player:

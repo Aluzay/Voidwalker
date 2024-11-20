@@ -7,7 +7,8 @@ extends Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	monitoring = false
-	print(monitoring)
+	if facing_shape == null:
+		facing_shape = $CollisionShape2D
 	character.connect("facing_direction_changed", _on_player_facing_direction_changed)
 
 func _on_body_entered(body: Node2D) -> void:

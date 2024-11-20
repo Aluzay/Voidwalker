@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyxdyndyb2xyn"]
+
+[ext_resource type="PackedScene" uid="uid://dc10jg6oq00b5" path="res://Scenes/FlyingGolem.tscn" id="1_l8m8x"]
+[ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemBoss.gd" id="2_xenku"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aeqpa"]
+radius = 55.0
+height = 110.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgahq"]
+size = Vector2(69, 95)
+
+[node name="FlyingGolemBoss" instance=ExtResource("1_l8m8x")]
+script = ExtResource("2_xenku")
+
+[node name="Damageable" parent="." index="0"]
+health = 200.0
+max_health = 200
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-2, 26)
+shape = SubResource("CapsuleShape2D_aeqpa")
+
+[node name="FlyingGolemFly" parent="StateMachine" index="3"]
+attack_distance = 110.0
+
+[node name="CollisionShape2D" parent="Attack/Area2D" index="0"]
+position = Vector2(79.5, 11.5)
+shape = SubResource("RectangleShape2D_dgahq")
+facing_left_position = Vector2(-79.5, 0)
+facing_right_position = Vector2(79.5, 0)
+
+[node name="Sprite2D" parent="." index="7"]
+scale = Vector2(3, 3)
+
+[node name="HealthBar" parent="." index="9"]
+offset_top = -41.0
+offset_bottom = -30.0
