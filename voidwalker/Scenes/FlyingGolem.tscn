@@ -377,12 +377,13 @@ _data = {
 "RESET": SubResource("Animation_yyvwj")
 }
 
-[node name="FlyingGolem" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+[node name="FlyingGolem" type="CharacterBody2D" node_paths=PackedStringArray("timer_movement", "nav_agent")]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 259
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_rt0ej")
+timer_movement = NodePath("RandomMovement")
 nav_agent = NodePath("Navigation/NavigationAgent2D")
 
 [node name="Damageable" parent="." instance=ExtResource("8_ckyxf")]

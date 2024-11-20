@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://bcnb8qvds8xid"]
+[gd_scene load_steps=44 format=4 uid="uid://bcnb8qvds8xid"]
 
 [ext_resource type="PackedScene" uid="uid://db2ekr5xklrqs" path="res://Scenes/BackgroundSaw.tscn" id="1_4pj4a"]
 [ext_resource type="Script" path="res://Scripts/Level2.gd" id="1_q8kex"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dubhn4visnxyv" path="res://Scenes/Room.tscn" id="6_ggrvh"]
 [ext_resource type="Script" path="res://Scripts/Camera/Camera.gd" id="7_ba5d6"]
 [ext_resource type="PackedScene" uid="uid://dmgpwae2tjg60" path="res://Scenes/HealthBar.tscn" id="8_hyl0n"]
+[ext_resource type="PackedScene" uid="uid://vir8bnjhwffg" path="res://Scenes/Menu/EndMenu.tscn" id="10_gri0m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aop41"]
 radius = 20.025
@@ -3895,8 +3896,9 @@ scale = Vector2(1, 3.10938)
 [node name="CollisionShape2D" parent="SawBackgrounds/BackgroundSaw15/End" index="0"]
 position = Vector2(0, 164)
 
-[node name="Player" parent="." instance=ExtResource("2_d7dgu")]
+[node name="Player" parent="." node_paths=PackedStringArray("damageable") instance=ExtResource("2_d7dgu")]
 position = Vector2(3015, -149)
+damageable = NodePath("Damageable")
 
 [node name="AttackWithWeapon" parent="Player" index="11"]
 damage = 200
@@ -3905,6 +3907,7 @@ damage = 200
 
 [node name="FlyingGolemBoss" parent="Ennemies" instance=ExtResource("3_ca2y5")]
 position = Vector2(3315, -208)
+collision_mask = 3
 
 [node name="SawBlades" type="Node2D" parent="."]
 
@@ -4132,6 +4135,10 @@ character = NodePath("../../Player")
 position = Vector2(2429, 158.75)
 shape = SubResource("RectangleShape2D_w0ap5")
 
+[node name="EndMenu" type="CanvasLayer" parent="."]
+
+[node name="EndMenu" parent="EndMenu" instance=ExtResource("10_gri0m")]
+
 [connection signal="body_entered" from="DeathArea" to="Player" method="_on_death_area_body_entered"]
 
 [editable path="SawBackgrounds/BackgroundSaw2"]
@@ -4157,3 +4164,4 @@ shape = SubResource("RectangleShape2D_w0ap5")
 [editable path="Rooms/Room4"]
 [editable path="Rooms/Room5"]
 [editable path="Rooms/Room6"]
+[editable path="EndMenu/EndMenu"]

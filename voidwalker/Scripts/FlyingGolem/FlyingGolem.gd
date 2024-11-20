@@ -2,6 +2,8 @@ extends Enemy
 
 class_name FlyingGolem
 
+@export var timer_movement : Timer
+
 func _ready() -> void:
 	anim_enemy.play("Idle")
 	nav_agent.path_desired_distance = 4

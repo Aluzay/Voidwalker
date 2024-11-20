@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
+@export var damageable : Damageable
+
 @onready var wall_collider = $WallCollider
 @onready var stair_collider = $StairCollider
 @onready var stair_collider2 = $StairCollider2
@@ -25,6 +27,7 @@ func _ready() -> void:
 	dash.emitting = false
 	Global.player = self
 	Global.connect("enemy_killed", _on_enemy_killed)
+	#damageable.health = Global.player_data.health
 	anim_player = $AnimationPlayer
 	sprite = $Sprite2D
 	anim_player.play("Idle")

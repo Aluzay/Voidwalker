@@ -3,12 +3,25 @@ extends Node2D
 var is_level1_finish : bool
 var is_player_inside_end : bool
 var target_kill : int = 5
+var rooms : Array
+
+@export var mob_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
+	target_kill = Global.nbr_enemies
+	
+	rooms = get_node("Rooms").get_children()
+	
+	for i in target_kill:
+		var mob = mob_scene.instantiate()
+		var mob_spawn_locaton = $Path2D/PathFollow2D
+		mob_spawn_locaton.progress_ratio = randf()
+		
+		mob.position = mob_spawn_locaton.position
+		print(mob.position)
+		
+		add_child(mob)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	gameEnd()

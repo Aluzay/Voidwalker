@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cju36ve4i5xqe"]
+[gd_scene load_steps=16 format=3 uid="uid://vir8bnjhwffg"]
 
-[ext_resource type="Script" path="res://Scripts/Menu/PauseMenu.gd" id="1_de54v"]
-[ext_resource type="Shader" path="res://PauseMenu.gdshader" id="2_jlwon"]
-[ext_resource type="FontFile" uid="uid://cnpkcbpgi1f8p" path="res://Font/Daydream.ttf" id="3_rins5"]
+[ext_resource type="Script" path="res://Scripts/Menu/EndMenu.gd" id="1_xlue5"]
+[ext_resource type="Shader" path="res://PauseMenu.gdshader" id="2_xsyx3"]
+[ext_resource type="FontFile" uid="uid://cnpkcbpgi1f8p" path="res://Font/Daydream.ttf" id="3_x4av2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i4x8l"]
-shader = ExtResource("2_jlwon")
+shader = ExtResource("2_xsyx3")
 shader_parameter/lod = 0.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_if4h4"]
@@ -115,7 +115,7 @@ _data = {
 "RESET": SubResource("Animation_1l33t")
 }
 
-[node name="PauseMenu" type="Control"]
+[node name="EndMenu" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -123,7 +123,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_de54v")
+script = ExtResource("1_xlue5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_i4x8l")
@@ -155,7 +155,7 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.498039, 0.498039, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 10
-theme_override_fonts/font = ExtResource("3_rins5")
+theme_override_fonts/font = ExtResource("3_x4av2")
 theme_override_font_sizes/font_size = 40
 text = "Voidwalker"
 horizontal_alignment = 1
@@ -166,7 +166,7 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Continue" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_pressed_color = Color(0.231373, 0.231373, 0.368627, 1)
@@ -177,20 +177,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_if4h4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_k61m0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_i8skw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_167ei")
-text = "Resume"
-
-[node name="Restart" type="Button" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.231373, 0.231373, 0.368627, 1)
-theme_override_colors/font_pressed_color = Color(0.231373, 0.231373, 0.368627, 1)
-theme_override_colors/font_focus_color = Color(0.231373, 0.231373, 0.368627, 1)
-theme_override_colors/font_color = Color(0.231373, 0.231373, 0.368627, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yxn7b")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wyvw4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4eobw")
-theme_override_styles/normal = SubResource("StyleBoxFlat_f70ih")
-text = "Restart"
+text = "Continue"
 
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -203,13 +190,13 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_yxn7b")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wyvw4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4eobw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_f70ih")
-text = "Quit"
+text = "Quit and save to leaderboard"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_hirkj")
 }
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Continue" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

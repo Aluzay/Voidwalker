@@ -11,3 +11,4 @@ func _process(delta: float) -> void:
 
 func _on_boss_killed() -> void:
 	print("The boss have been killed")
+	$EndMenu/EndMenu.showMenu()
