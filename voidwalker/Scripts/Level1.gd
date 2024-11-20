@@ -3,15 +3,12 @@ extends Node2D
 var is_level1_finish : bool
 var is_player_inside_end : bool
 var target_kill : int = 5
-var rooms : Array
 
 @export var mob_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	target_kill = Global.nbr_enemies
-	
-	rooms = get_node("Rooms").get_children()
 	
 	for i in target_kill:
 		var mob = mob_scene.instantiate()

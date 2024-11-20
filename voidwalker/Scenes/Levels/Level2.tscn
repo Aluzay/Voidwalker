@@ -1,7 +1,8 @@
-[gd_scene load_steps=44 format=4 uid="uid://bcnb8qvds8xid"]
+[gd_scene load_steps=48 format=4 uid="uid://bcnb8qvds8xid"]
 
 [ext_resource type="PackedScene" uid="uid://db2ekr5xklrqs" path="res://Scenes/BackgroundSaw.tscn" id="1_4pj4a"]
 [ext_resource type="Script" path="res://Scripts/Level2.gd" id="1_q8kex"]
+[ext_resource type="PackedScene" uid="uid://dc10jg6oq00b5" path="res://Scenes/FlyingGolem.tscn" id="2_cjtop"]
 [ext_resource type="PackedScene" uid="uid://dkum6w3w2njd5" path="res://Scenes/Player.tscn" id="2_d7dgu"]
 [ext_resource type="PackedScene" uid="uid://dyxdyndyb2xyn" path="res://Scenes/FlyingGolemBoss.tscn" id="3_ca2y5"]
 [ext_resource type="PackedScene" uid="uid://dkra1r6kxli03" path="res://Scenes/SawBlade.tscn" id="4_wqkqc"]
@@ -3808,8 +3809,27 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(80, -245, 76, 312, 3986
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0ap5"]
 size = Vector2(2840, 1.5)
 
+[sub_resource type="Curve2D" id="Curve2D_q6d7t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1748, -573, 0, 0, 0, 0, 1883, -518, 0, 0, 0, 0, 1939, -652, 0, 0, 0, 0, 2038, -519, 0, 0, 0, 0, 2131, -655, 0, 0, 0, 0, 2239, -523, 0, 0, 0, 0, 2318, -669, 0, 0, 0, 0, 2365, -502, 0, 0, 0, 0, 2527, -608, 0, 0, 0, 0, 2541, -340)
+}
+point_count = 10
+
+[sub_resource type="Curve2D" id="Curve2D_x1xtp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 533, 87, 0, 0, 0, 0, 406, -105, 0, 0, 0, 0, 401, 94, 0, 0, 0, 0, 816, 107, 0, 0, 0, 0, 557, -50, 0, 0, 0, 0, 888, 46, 0, 0, 0, 0, 857, -272, 0, 0, 0, 0, 976, -14, 0, 0, 0, 0, 874, -381, 0, 0, 0, 0, 966, -380, 0, 0, 0, 0, 982, -726, 0, 0, 0, 0, 1166, -726)
+}
+point_count = 12
+
+[sub_resource type="Curve2D" id="Curve2D_po5sc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2987, -248, 0, 0, 0, 0, 3173, -120, 0, 0, 0, 0, 3509, -119, 0, 0, 0, 0, 3636, -240, 0, 0, 0, 0, 2998, -249)
+}
+point_count = 5
+
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_q8kex")
+mob_scene = ExtResource("2_cjtop")
 
 [node name="SawBackgrounds" type="Node2D" parent="."]
 
@@ -4138,6 +4158,29 @@ shape = SubResource("RectangleShape2D_w0ap5")
 [node name="EndMenu" type="CanvasLayer" parent="."]
 
 [node name="EndMenu" parent="EndMenu" instance=ExtResource("10_gri0m")]
+
+[node name="EnemiesSpawnPath" type="Node2D" parent="."]
+
+[node name="Salle2" type="Path2D" parent="EnemiesSpawnPath"]
+curve = SubResource("Curve2D_q6d7t")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemiesSpawnPath/Salle2"]
+position = Vector2(1748, -573)
+rotation = 0.386876
+
+[node name="Salle1" type="Path2D" parent="EnemiesSpawnPath"]
+curve = SubResource("Curve2D_x1xtp")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemiesSpawnPath/Salle1"]
+position = Vector2(533, 87)
+rotation = -2.15518
+
+[node name="Salle3" type="Path2D" parent="EnemiesSpawnPath"]
+curve = SubResource("Curve2D_po5sc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemiesSpawnPath/Salle3"]
+position = Vector2(2987, -248)
+rotation = 0.602744
 
 [connection signal="body_entered" from="DeathArea" to="Player" method="_on_death_area_body_entered"]
 
