@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://bolihdcq7boeg"]
+[gd_scene load_steps=68 format=4 uid="uid://bolihdcq7boeg"]
 
 [ext_resource type="Script" path="res://Scripts/Level1.gd" id="1_lj4jm"]
 [ext_resource type="Texture2D" uid="uid://djuqjalvb6oie" path="res://Tiles/main_lev_build.png" id="2_diqw6"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d3cw0tao0fgox" path="res://Images/Galaxy/Stars Small_2.png" id="13_dac1i"]
 [ext_resource type="PackedScene" uid="uid://cju36ve4i5xqe" path="res://Scenes/Menu/PauseMenu.tscn" id="14_8dv7u"]
 [ext_resource type="PackedScene" uid="uid://dmgpwae2tjg60" path="res://Scenes/HealthBar.tscn" id="15_8ib3m"]
+[ext_resource type="PackedScene" uid="uid://bmvh261qhnbjq" path="res://Scenes/TimeScore.tscn" id="16_x6btq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b1io4"]
 texture = ExtResource("2_diqw6")
@@ -9006,6 +9007,21 @@ position = Vector2(296, 1110)
 [node name="CollisionShape2D" parent="DeathRoom" index="0"]
 position = Vector2(336.25, 0)
 
+[node name="TimeScore" parent="." instance=ExtResource("16_x6btq")]
+
+[node name="Label" parent="TimeScore" index="0"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_b4pl4")
 
@@ -9047,3 +9063,4 @@ rotation = -3.06158
 [editable path="Rooms/Room"]
 [editable path="PauseMenu/PauseMenu"]
 [editable path="DeathRoom"]
+[editable path="TimeScore"]

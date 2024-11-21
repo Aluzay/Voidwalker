@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm6nkswayy1na"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/Leaderboard.gd" id="1_c2yjy"]
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c2yjy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -20.0
+offset_right = 161.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Enter your name :"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+text = "Name"
+placeholder_text = "Name"
+max_length = 30
+expand_to_text_length = true
+
+[node name="Submit" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Submit score"
+
+[connection signal="text_changed" from="HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="HBoxContainer/Submit" to="." method="_on_submit_pressed"]

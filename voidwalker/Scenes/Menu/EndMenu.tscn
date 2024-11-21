@@ -197,6 +197,6 @@ libraries = {
 "": SubResource("AnimationLibrary_hirkj")
 }
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Continue" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Continue" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

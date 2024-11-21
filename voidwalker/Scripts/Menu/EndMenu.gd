@@ -15,4 +15,5 @@ func _on_continue_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Levels/Level1.tscn")
 
 func _on_quit_pressed() -> void:
-	pass # Replace with function body.
+	$AnimationPlayer.play_backwards("Blur")
+	Global.emit_signal("ask_name")

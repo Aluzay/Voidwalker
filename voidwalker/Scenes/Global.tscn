@@ -4,3 +4,5 @@
 
 [node name="Global" type="Node"]
 script = ExtResource("1_ayj2c")
+
+[node name="Timer" type="Timer" parent="."]
