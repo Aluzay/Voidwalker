@@ -21,6 +21,19 @@ func _ready() -> void:
 func increase_nbr_enemies() -> void:
 	nbr_enemies += 1
 
+func calculate_score(base_points: float, difficulty: float, time: float, scaling_factor: float, time_adjustment_factor: float) -> float:
+	var adjusted_time = time / (difficulty ** time_adjustment_factor)
+	return base_points * (difficulty ** scaling_factor) / (1 + adjusted_time)
+
+func get_player_score() -> float:
+	var base_points : float = 100.0
+	var scaling_factor : float = 2.5
+	var time_adjustment_factor : float = 1.2
+	
+	var score : float = calculate_score(base_points, nbr_enemies, player_time_score, scaling_factor, time_adjustment_factor)
+	
+	return score
+
 func verify_save_directory(path : String) -> void:
 	DirAccess.make_dir_absolute(path)
 

@@ -1,19 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://djp65kyloekpt"]
+[gd_scene load_steps=13 format=3 uid="uid://djp65kyloekpt"]
 
 [ext_resource type="Script" path="res://Letters.gd" id="1_4hlfc"]
 [ext_resource type="Script" path="res://TestInput.gd" id="1_bwu7w"]
 [ext_resource type="Shader" path="res://PauseMenu.gdshader" id="1_s5lde"]
 [ext_resource type="Script" path="res://SlotsInteraction.gd" id="1_u4j72"]
+[ext_resource type="Texture2D" uid="uid://bomcirlrpmapp" path="res://Images/13109aa1-9a41-41f7-9aa3-103a9627732d.webp" id="2_11o4u"]
+[ext_resource type="FontFile" uid="uid://cnpkcbpgi1f8p" path="res://Font/Daydream.ttf" id="6_bsgq5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nmphx"]
+texture = ExtResource("2_11o4u")
+modulate_color = Color(0.306923, 0.306923, 0.306923, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ncdu7"]
 shader = ExtResource("1_s5lde")
 shader_parameter/lod = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msmal"]
+bg_color = Color(0.647059, 0.784314, 1, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+border_color = Color(0.494118, 0.65098, 0.878431, 1)
 expand_margin_left = 10.0
 expand_margin_top = 10.0
 expand_margin_right = 10.0
@@ -93,6 +101,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bwu7w")
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nmphx")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ncdu7")
 layout_mode = 1
@@ -103,6 +120,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -128,18 +146,21 @@ theme_override_constants/separation = 25
 
 [node name="Lettre1" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_msmal")
 text = "A"
 script = ExtResource("1_4hlfc")
 
 [node name="Lettre2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_msmal")
 text = "A"
 script = ExtResource("1_4hlfc")
 
 [node name="Lettre3" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_msmal")
 text = "A"
 script = ExtResource("1_4hlfc")
@@ -148,3 +169,22 @@ script = ExtResource("1_4hlfc")
 libraries = {
 "": SubResource("AnimationLibrary_hirkj")
 }
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -234.5
+offset_top = 77.0
+offset_right = 234.5
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.498039, 0.498039, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_fonts/font = ExtResource("6_bsgq5")
+theme_override_font_sizes/font_size = 60
+text = "Voidwalker"
+horizontal_alignment = 1
+vertical_alignment = 1

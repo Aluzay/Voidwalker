@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://bcnb8qvds8xid"]
+[gd_scene load_steps=50 format=4 uid="uid://bcnb8qvds8xid"]
 
 [ext_resource type="PackedScene" uid="uid://db2ekr5xklrqs" path="res://Scenes/BackgroundSaw.tscn" id="1_4pj4a"]
 [ext_resource type="Script" path="res://Scripts/Level2.gd" id="1_q8kex"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dmgpwae2tjg60" path="res://Scenes/HealthBar.tscn" id="8_hyl0n"]
 [ext_resource type="PackedScene" uid="uid://vir8bnjhwffg" path="res://Scenes/Menu/EndMenu.tscn" id="10_gri0m"]
 [ext_resource type="PackedScene" uid="uid://bmvh261qhnbjq" path="res://Scenes/TimeScore.tscn" id="12_htvf4"]
+[ext_resource type="FontFile" uid="uid://cnpkcbpgi1f8p" path="res://Font/Daydream.ttf" id="13_qyr2h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aop41"]
 radius = 20.025
@@ -4191,12 +4192,15 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -23.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = -59.0
+offset_top = -28.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_color = Color(0.231373, 0.231373, 0.368627, 1)
+theme_override_fonts/font = ExtResource("13_qyr2h")
+text = "2:20"
 
 [connection signal="body_entered" from="DeathArea" to="Player" method="_on_death_area_body_entered"]
 

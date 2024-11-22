@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 script = ExtResource("1_3mlof")
-leaderboard_id = "voidwalkerleaderboar-voidwalker-lead-Wh7W"
+leaderboard_id = "voidwalkerleaderboar-voidwalker-lead-3Hgs"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
