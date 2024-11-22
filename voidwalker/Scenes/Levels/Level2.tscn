@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://bcnb8qvds8xid"]
+[gd_scene load_steps=49 format=4 uid="uid://bcnb8qvds8xid"]
 
 [ext_resource type="PackedScene" uid="uid://db2ekr5xklrqs" path="res://Scenes/BackgroundSaw.tscn" id="1_4pj4a"]
 [ext_resource type="Script" path="res://Scripts/Level2.gd" id="1_q8kex"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dmgpwae2tjg60" path="res://Scenes/HealthBar.tscn" id="8_hyl0n"]
 [ext_resource type="PackedScene" uid="uid://vir8bnjhwffg" path="res://Scenes/Menu/EndMenu.tscn" id="10_gri0m"]
 [ext_resource type="PackedScene" uid="uid://bmvh261qhnbjq" path="res://Scenes/TimeScore.tscn" id="12_htvf4"]
-[ext_resource type="PackedScene" uid="uid://bm6nkswayy1na" path="res://Scenes/Menu/Leaderboard.tscn" id="12_qbwys"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aop41"]
 radius = 20.025
@@ -4184,14 +4183,6 @@ curve = SubResource("Curve2D_po5sc")
 position = Vector2(2987, -248)
 rotation = 0.602744
 
-[node name="AskName" type="CanvasLayer" parent="."]
-
-[node name="Leaderboard" parent="AskName" instance=ExtResource("12_qbwys")]
-mouse_filter = 1
-
-[node name="Label" parent="AskName/Leaderboard/HBoxContainer" index="0"]
-mouse_filter = 1
-
 [node name="TimeScore" parent="." instance=ExtResource("12_htvf4")]
 
 [node name="Label" parent="TimeScore" index="0"]
@@ -4233,5 +4224,4 @@ grow_vertical = 0
 [editable path="Rooms/Room5"]
 [editable path="Rooms/Room6"]
 [editable path="EndMenu/EndMenu"]
-[editable path="AskName/Leaderboard"]
 [editable path="TimeScore"]

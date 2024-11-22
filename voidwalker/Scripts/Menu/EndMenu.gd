@@ -16,4 +16,6 @@ func _on_continue_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	$AnimationPlayer.play_backwards("Blur")
-	Global.emit_signal("ask_name")
+	visible = false
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://TestInput.tscn")
