@@ -25,3 +25,7 @@ func Update(delta: float):
 			player.velocity.y = min(player.velocity.y, WALL_SLIDING_SPEED)
 		else:
 			Transitioned.emit(self, "playerfalling")
+
+func Exit() -> void:
+	player.attack_area.monitoring = false
+	player.attack_weapon_area.monitoring = false

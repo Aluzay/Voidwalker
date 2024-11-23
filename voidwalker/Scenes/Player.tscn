@@ -1,10 +1,15 @@
-[gd_scene load_steps=44 format=3 uid="uid://dkum6w3w2njd5"]
+[gd_scene load_steps=49 format=3 uid="uid://dkum6w3w2njd5"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_esbea"]
 [ext_resource type="Texture2D" uid="uid://bp5jw1qtk7hx" path="res://AnimationSheet/PlayerSheet.png" id="2_csmvn"]
 [ext_resource type="Texture2D" uid="uid://cnh1ssjvupjsg" path="res://AnimationSheet/PlayerCombatSheet.png" id="3_my31x"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.gd" id="5_6h4n1"]
+[ext_resource type="AudioStream" uid="uid://dhudoo65qwe7o" path="res://Sounds/Player/hitPlayer.wav" id="5_tnil3"]
+[ext_resource type="AudioStream" uid="uid://cleist0yarhw2" path="res://Sounds/Player/jumpPlayer.wav" id="6_6rlsh"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerFalling.gd" id="6_ke4sl"]
+[ext_resource type="AudioStream" uid="uid://cq3rkvgpx7vq" path="res://Sounds/Player/hitWeaponPlayer.wav" id="6_tvcg7"]
+[ext_resource type="AudioStream" uid="uid://dw0gusuyta7xf" path="res://Sounds/Player/hurtPlayer.wav" id="7_fncji"]
+[ext_resource type="AudioStream" uid="uid://dswqfd8n5shoq" path="res://Sounds/Player/playerDie.wav" id="7_hhatw"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerJump.gd" id="7_shb1f"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerIdle.gd" id="8_hv6uj"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerWallJump.gd" id="9_bswbk"]
@@ -87,6 +92,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_tnil3")
+}],
+"times": PackedFloat32Array(0.266667)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_7etsa"]
 resource_name = "AttackWithWeapon"
@@ -151,6 +171,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_tvcg7")
+}],
+"times": PackedFloat32Array(0.166667)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_hq3jq"]
 resource_name = "Dash"
@@ -255,6 +290,21 @@ tracks/3/keys = {
 "update": 0,
 "values": [518, 519, 520, 521, 522, 523, 524, 525, 526]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_hhatw")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_iy88o"]
 resource_name = "Falling"
@@ -411,6 +461,21 @@ tracks/3/keys = {
 "update": 0,
 "values": [504, 505, 506, 507, 508, 509]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_fncji")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_k4sbi"]
 resource_name = "Idle"
@@ -569,6 +634,21 @@ tracks/3/keys = {
 "update": 0,
 "values": [70]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0478969,
+"start_offset": 0.0,
+"stream": ExtResource("6_6rlsh")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_4oiqc"]
 resource_name = "JumpWithWeapon"
@@ -621,6 +701,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [43]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0485542,
+"start_offset": 0.0,
+"stream": ExtResource("6_6rlsh")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_7akpq"]
 length = 0.001
@@ -1075,6 +1170,8 @@ material = SubResource("ShaderMaterial_i4saa")
 process_material = SubResource("ParticleProcessMaterial_w6m7p")
 texture = ExtResource("17_kws65")
 lifetime = 0.2
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="RoomDetector" to="." method="_on_room_detector_area_entered"]

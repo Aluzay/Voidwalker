@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dc10jg6oq00b5"]
+[gd_scene load_steps=30 format=3 uid="uid://dc10jg6oq00b5"]
 
 [ext_resource type="Texture2D" uid="uid://ds85etxb4tet8" path="res://AnimationSheet/Golem_2/Red/No_Swoosh_VFX/Golem_02_attack.png" id="1_m27c0"]
 [ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolem.gd" id="1_rt0ej"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://Scripts/Attack/Attack.gd" id="10_msm4q"]
 [ext_resource type="Script" path="res://Scripts/FacingCollisionShape.gd" id="11_m70og"]
 [ext_resource type="Script" path="res://Scripts/FlyingGolem/FlyingGolemFly.gd" id="11_rttw0"]
+[ext_resource type="AudioStream" uid="uid://d17ewm1w7q3td" path="res://Sounds/FlyingGolem/hitFlyingGolem.wav" id="12_d5qhi"]
+[ext_resource type="AudioStream" uid="uid://cpkqrv1e3pjad" path="res://Sounds/FlyingGolem/hurtFlyingGolem.wav" id="16_jbdx5"]
 [ext_resource type="PackedScene" uid="uid://dmgpwae2tjg60" path="res://Scenes/HealthBar.tscn" id="16_ukb7n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hxnuy"]
@@ -93,6 +95,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true, true, false]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_d5qhi")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_y1pty"]
 resource_name = "Die"
@@ -250,6 +267,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_jbdx5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_if8dr"]
 resource_name = "Idle"
@@ -475,6 +507,8 @@ offset_top = -23.0
 offset_right = 21.0
 offset_bottom = -12.0
 character = NodePath("..")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="RandomMovement" to="." method="_on_random_movement_timeout"]
 [connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]

@@ -4,10 +4,13 @@ class_name FlyingGolem
 
 @export var timer_movement : Timer
 
+@onready var music : AudioStreamPlayer = $AudioStreamPlayer
+
 func _ready() -> void:
 	anim_enemy.play("Idle")
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
+	MusicManager.add_sound(music)
 
 func _physics_process(delta: float) -> void:
 	if velocity.x < 0:

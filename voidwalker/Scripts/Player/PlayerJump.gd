@@ -34,3 +34,7 @@ func Update(delta: float):
 	
 	if Input.is_action_just_pressed("Dash") and player.direction and player.can_dash:
 		Transitioned.emit(self, "playerdash")
+
+func Exit() -> void:
+	player.attack_area.monitoring = false
+	player.attack_weapon_area.monitoring = false

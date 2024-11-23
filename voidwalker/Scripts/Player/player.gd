@@ -8,7 +8,9 @@ class_name Player
 @onready var stair_collider = $StairCollider
 @onready var stair_collider2 = $StairCollider2
 @onready var attack_area = $AttackArea
+@onready var attack_weapon_area = $AttackWithWeapon
 @onready var dash : GPUParticles2D = $Dash
+@onready var music : AudioStreamPlayer = $Audio
 
 var anim_player : AnimationPlayer
 var sprite : Sprite2D
@@ -27,6 +29,7 @@ func _ready() -> void:
 	dash.emitting = false
 	Global.player = self
 	Global.connect("enemy_killed", _on_enemy_killed)
+	MusicManager.add_sound(music)
 	#damageable.health = Global.player_data.health
 	anim_player = $AnimationPlayer
 	sprite = $Sprite2D

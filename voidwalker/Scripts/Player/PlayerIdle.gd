@@ -32,6 +32,10 @@ func Update(delta: float):
 		if Input.is_action_just_pressed("ui_accept"):
 			Transitioned.emit(self, "playerjump")
 
+func Exit() -> void:
+	player.attack_area.monitoring = false
+	player.attack_weapon_area.monitoring = false
+
 func switch_weapon() -> void:
 	if Input.is_action_just_pressed("Switch"):
 		player.is_using_weapon = !player.is_using_weapon

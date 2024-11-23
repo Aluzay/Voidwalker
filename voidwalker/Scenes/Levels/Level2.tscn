@@ -1,9 +1,10 @@
-[gd_scene load_steps=50 format=4 uid="uid://bcnb8qvds8xid"]
+[gd_scene load_steps=51 format=4 uid="uid://bcnb8qvds8xid"]
 
 [ext_resource type="PackedScene" uid="uid://db2ekr5xklrqs" path="res://Scenes/BackgroundSaw.tscn" id="1_4pj4a"]
 [ext_resource type="Script" path="res://Scripts/Level2.gd" id="1_q8kex"]
 [ext_resource type="PackedScene" uid="uid://dc10jg6oq00b5" path="res://Scenes/FlyingGolem.tscn" id="2_cjtop"]
 [ext_resource type="PackedScene" uid="uid://dkum6w3w2njd5" path="res://Scenes/Player.tscn" id="2_d7dgu"]
+[ext_resource type="PackedScene" uid="uid://sc2l1fdd7ccs" path="res://Scenes/Toast.tscn" id="3_4i8ol"]
 [ext_resource type="PackedScene" uid="uid://dyxdyndyb2xyn" path="res://Scenes/FlyingGolemBoss.tscn" id="3_ca2y5"]
 [ext_resource type="PackedScene" uid="uid://dkra1r6kxli03" path="res://Scenes/SawBlade.tscn" id="4_wqkqc"]
 [ext_resource type="Texture2D" uid="uid://djuqjalvb6oie" path="res://Tiles/main_lev_build.png" id="5_mplla"]
@@ -3832,6 +3833,7 @@ point_count = 5
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_q8kex")
 mob_scene = ExtResource("2_cjtop")
+toast_scene = ExtResource("3_4i8ol")
 
 [node name="SawBackgrounds" type="Node2D" parent="."]
 

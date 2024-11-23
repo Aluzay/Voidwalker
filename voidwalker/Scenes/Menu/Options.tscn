@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhqspu4k5i7tg"]
+
+[ext_resource type="Texture2D" uid="uid://bomcirlrpmapp" path="res://Images/13109aa1-9a41-41f7-9aa3-103a9627732d.webp" id="1_68ycg"]
+[ext_resource type="Script" path="res://Scripts/Menu/Options.gd" id="1_nyxve"]
+[ext_resource type="FontFile" uid="uid://cnpkcbpgi1f8p" path="res://Font/Daydream.ttf" id="2_lmtni"]
+[ext_resource type="Script" path="res://Music.gd" id="3_kcp7r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qrem3"]
+texture = ExtResource("1_68ycg")
+modulate_color = Color(0.306923, 0.306923, 0.306923, 1)
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nyxve")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qrem3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.0
+offset_top = 77.0
+offset_right = 304.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.498039, 0.498039, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_fonts/font = ExtResource("2_lmtni")
+theme_override_font_sizes/font_size = 60
+text = "Voidwalker"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 464.0
+offset_top = 311.5
+offset_right = 587.0
+offset_bottom = 334.5
+theme_override_colors/font_color = Color(0.498039, 0.498039, 1, 1)
+theme_override_fonts/font = ExtResource("2_lmtni")
+text = "Sounds : "
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 2
+offset_left = 597.0
+offset_top = 316.0
+offset_right = 681.0
+offset_bottom = 332.0
+size_flags_horizontal = 4
+max_value = 1.0
+step = 0.01
+script = ExtResource("3_kcp7r")
+
+[connection signal="drag_ended" from="HSlider" to="HSlider" method="_on_drag_ended"]

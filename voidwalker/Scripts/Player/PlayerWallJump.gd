@@ -45,3 +45,5 @@ func Update(delta: float):
 
 func Exit():
 	player.can_double_jump = true
+	player.attack_area.monitoring = false
+	player.attack_weapon_area.monitoring = false

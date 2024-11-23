@@ -14,7 +14,8 @@ func Enter():
 		anim_player.play("Attack")
 	else:
 		anim_player.play("AttackWithWeapon")
-			
+	
+	
 func Update(delta: float):
 	if player.direction:
 		Transitioned.emit(self, "playerwalk")
@@ -27,3 +28,7 @@ func Update(delta: float):
 	
 	if not anim_player.is_playing():
 		Transitioned.emit(self, "playeridle")
+
+func Exit():
+	player.attack_area.monitoring = false
+	player.attack_weapon_area.monitoring = false

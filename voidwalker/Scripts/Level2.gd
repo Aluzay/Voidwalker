@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var mob_scene : PackedScene
+@export var toast_scene : PackedScene
 
 var target_kill : int
 
@@ -16,9 +17,17 @@ func _ready() -> void:
 		mob_spawn_locaton.progress_ratio = randf()
 		
 		mob.position = mob_spawn_locaton.position
-		print(mob.position)
 		
 		add_child(mob)
+		
+	for i in Global.nbr_toasts:
+		var toast = toast_scene.instantiate()
+		var toast_spawn_location = choose([$EnemiesSpawnPath/Salle1/PathFollow2D, $EnemiesSpawnPath/Salle2/PathFollow2D, $EnemiesSpawnPath/Salle3/PathFollow2D])
+		toast_spawn_location.progress_ratio = randf()
+		
+		toast.position = toast_spawn_location.position
+	
+		add_child(toast)	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

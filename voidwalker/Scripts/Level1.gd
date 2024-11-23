@@ -27,9 +27,10 @@ func _ready() -> void:
 		toast_spawn_location.progress_ratio = randf()
 		
 		toast.position = toast_spawn_location.position
-		print(toast.position)
 	
-		add_child(toast)		
+		add_child(toast)
+	
+	MusicManager.set_sounds()	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	gameEnd()

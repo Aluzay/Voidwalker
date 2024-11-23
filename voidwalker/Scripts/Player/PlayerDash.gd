@@ -36,3 +36,5 @@ func Update(delta: float):
 
 func Exit():
 	player.dash.emitting = false
+	player.attack_area.monitoring = false
+	player.attack_weapon_area.monitoring = false
