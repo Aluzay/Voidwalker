@@ -1,8 +1,9 @@
-[gd_scene load_steps=70 format=4 uid="uid://bolihdcq7boeg"]
+[gd_scene load_steps=71 format=4 uid="uid://bolihdcq7boeg"]
 
 [ext_resource type="Script" path="res://Scripts/Level1.gd" id="1_lj4jm"]
 [ext_resource type="Texture2D" uid="uid://djuqjalvb6oie" path="res://Tiles/main_lev_build.png" id="2_diqw6"]
 [ext_resource type="Texture2D" uid="uid://dl3el2mvl8smh" path="res://Tiles/other_and_decorative.png" id="3_kqr75"]
+[ext_resource type="PackedScene" uid="uid://sc2l1fdd7ccs" path="res://Scenes/Toast.tscn" id="3_sinl4"]
 [ext_resource type="PackedScene" uid="uid://db2ekr5xklrqs" path="res://Scenes/BackgroundSaw.tscn" id="4_dk4eu"]
 [ext_resource type="PackedScene" uid="uid://dkra1r6kxli03" path="res://Scenes/SawBlade.tscn" id="5_7pxg5"]
 [ext_resource type="PackedScene" uid="uid://dc10jg6oq00b5" path="res://Scenes/FlyingGolem.tscn" id="6_yc5ld"]
@@ -8540,6 +8541,7 @@ point_count = 24
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_lj4jm")
 mob_scene = ExtResource("6_yc5ld")
+toast_scene = ExtResource("3_sinl4")
 
 [node name="BackgroundBackgroundTiles" type="TileMapLayer" parent="."]
 visible = false
@@ -8670,10 +8672,6 @@ navigation_polygon = SubResource("NavigationPolygon_f2av8")
 [node name="Player" parent="." node_paths=PackedStringArray("damageable") instance=ExtResource("7_8hyis")]
 position = Vector2(-384, -156)
 damageable = NodePath("Damageable")
-
-[node name="Damageable" parent="Player" index="0"]
-health = 200000.0
-max_health = 200000
 
 [node name="StairCollider" parent="Player" index="8"]
 collision_mask = 7

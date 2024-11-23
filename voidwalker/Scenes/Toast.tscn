@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://sc2l1fdd7ccs"]
+
+[ext_resource type="Script" path="res://Scripts/Toast.gd" id="1_gijev"]
+[ext_resource type="Texture2D" uid="uid://ddkxsacntl0mv" path="res://AnimationSheet/Collectables/Framboise.png" id="1_q7q7i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hy6l1"]
+radius = 7.0
+
+[node name="Toast" type="Area2D"]
+script = ExtResource("1_gijev")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_q7q7i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_hy6l1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

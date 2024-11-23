@@ -3,11 +3,13 @@ extends Node
 signal enemy_killed
 signal boss_killed
 signal ask_name
+signal healed
 
 var player : Player
 var player_name : String
 var player_time_score : float = 0.0
 var nbr_enemies : int = 5
+var nbr_toasts : int = 20
 var player_data = PlayerData.new()
 var level1_data = Level1Data.new()
 

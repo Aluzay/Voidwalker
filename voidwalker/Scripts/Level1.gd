@@ -5,6 +5,7 @@ var is_player_inside_end : bool
 var target_kill : int = 5
 
 @export var mob_scene : PackedScene
+@export var toast_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +20,16 @@ func _ready() -> void:
 		print(mob.position)
 		
 		add_child(mob)
+		
+	for i in Global.nbr_toasts:
+		var toast = toast_scene.instantiate()
+		var toast_spawn_location = $Path2D/PathFollow2D
+		toast_spawn_location.progress_ratio = randf()
+		
+		toast.position = toast_spawn_location.position
+		print(toast.position)
+	
+		add_child(toast)		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	gameEnd()
