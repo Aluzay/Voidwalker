@@ -25,6 +25,7 @@ func increase_nbr_enemies() -> void:
 
 func calculate_score(base_points: float, difficulty: float, time: float, scaling_factor: float, time_adjustment_factor: float) -> float:
 	var adjusted_time = time / (difficulty ** time_adjustment_factor)
+	
 	return base_points * (difficulty ** scaling_factor) / (1 + adjusted_time)
 
 func get_player_score() -> float:

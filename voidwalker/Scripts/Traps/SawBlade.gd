@@ -14,13 +14,12 @@ func _ready() -> void:
 	sprite = $Sprite2D
 	anim_player.play("SawBlade")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if anim_player.is_playing():
-		moving()
-
-func moving():
-	position.y += saw_speed
+		moving(delta)
+		
+func moving(delta: float):
+	position.y += saw_speed * delta
 
 func _on_timer_timeout() -> void:
 	anim_player.play("SawBlade")

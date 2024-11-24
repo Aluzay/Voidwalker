@@ -17,7 +17,7 @@ func Enter():
 	anim_player.play("Hurt")
 
 func Update(delta: float):
-	if not player.is_on_floor():
+	if not player.is_on_floor() and not anim_player.is_playing():
 		Transitioned.emit(self, "playerfalling")
 	
 	if not anim_player.is_playing():

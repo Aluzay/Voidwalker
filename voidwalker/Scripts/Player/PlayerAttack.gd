@@ -17,10 +17,13 @@ func Enter():
 	
 	
 func Update(delta: float):
+	if not player.is_on_floor() and anim_player.is_playing():
+		player.velocity += player.get_gravity() * delta
+	
 	if player.direction:
 		Transitioned.emit(self, "playerwalk")
 	
-	if not player.is_on_floor():
+	if not player.is_on_floor() and not anim_player.is_playing():
 		Transitioned.emit(self, "playerfalling")
 	
 	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():

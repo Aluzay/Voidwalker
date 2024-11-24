@@ -1,9 +1,10 @@
 extends CanvasLayer
 
 var time = Global.player_time_score
- 
+
+
 func _physics_process(delta):
-	time = time + delta
+	time = TimeManager.elapsed_time
 	update_ui()
 	
 func update_ui():

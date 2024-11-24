@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_start_pressed() -> void:
+	TimeManager.start_timer()
 	Global.load_game()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Level1.tscn")
 

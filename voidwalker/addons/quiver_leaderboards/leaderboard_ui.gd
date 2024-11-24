@@ -47,6 +47,9 @@ func _ready() -> void:
 	if leaderboard_id:
 		refresh_scores()
 
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("Escape"):
+		get_tree().change_scene_to_file("res://Scenes/Menu/MainMenu.tscn")
 
 func refresh_scores():
 	if not leaderboard_id:

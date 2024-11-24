@@ -23,8 +23,9 @@ func confirm_name():
 	for slot in slots:
 		name += slot.text
 	print("Nom confirmé : ", name)
-
-	await Leaderboards.post_guest_score("voidwalkerleaderboar-voidwalker-lead-3Hgs", Global.get_player_score(), name)
+	print("Player time : ", Global.player_time_score)
+	
+	await Leaderboards.post_guest_score("voidwalkerleaderboar-voidwalker-lead-bCFF", Global.get_player_score(), name)
 	get_tree().change_scene_to_file("res://Scenes/Menu/MainMenu.tscn")
 
 # Met en évidence le slot actif

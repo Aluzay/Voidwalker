@@ -16,7 +16,8 @@ func Enter():
 	
 func Update(delta: float):		
 	if not anim_player.is_playing():
-			get_tree().change_scene_to_file("res://Scenes/Menu/MainMenu.tscn")
+		TimeManager.reset_timer()
+		get_tree().change_scene_to_file("res://Scenes/Menu/MainMenu.tscn")
 
 func Exit():
 	player.attack_area.monitoring = false

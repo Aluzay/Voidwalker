@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://bcnb8qvds8xid"]
+[gd_scene load_steps=54 format=4 uid="uid://bcnb8qvds8xid"]
 
 [ext_resource type="PackedScene" uid="uid://db2ekr5xklrqs" path="res://Scenes/BackgroundSaw.tscn" id="1_4pj4a"]
 [ext_resource type="Script" path="res://Scripts/Level2.gd" id="1_q8kex"]
@@ -3801,6 +3801,15 @@ size = Vector2(208, 512)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pitww"]
 size = Vector2(1104, 360)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h21j"]
+size = Vector2(112, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_670w2"]
+size = Vector2(1, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irsf5"]
+size = Vector2(80, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gadrb"]
 size = Vector2(1, 192)
 
@@ -3820,9 +3829,9 @@ point_count = 10
 
 [sub_resource type="Curve2D" id="Curve2D_x1xtp"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 533, 87, 0, 0, 0, 0, 406, -105, 0, 0, 0, 0, 401, 94, 0, 0, 0, 0, 816, 107, 0, 0, 0, 0, 557, -50, 0, 0, 0, 0, 888, 46, 0, 0, 0, 0, 857, -272, 0, 0, 0, 0, 976, -14, 0, 0, 0, 0, 874, -381, 0, 0, 0, 0, 966, -380, 0, 0, 0, 0, 982, -726, 0, 0, 0, 0, 1166, -726)
+"points": PackedVector2Array(0, 0, 0, 0, 533, 87, 0, 0, 0, 0, 406, -105, 0, 0, 0, 0, 401, 94, 0, 0, 0, 0, 816, 107, 0, 0, 0, 0, 557, -50, 0, 0, 0, 0, 888, 46, 0, 0, 0, 0, 857, -272, 0, 0, 0, 0, 976, -14, 0, 0, 0, 0, 971.51, -39.7897, 0, 0, 0, 0, 874, -381, 0, 0, 0, 0, 966, -380, 0, 0, 0, 0, 982, -726, 0, 0, 0, 0, 1166, -726)
 }
-point_count = 12
+point_count = 13
 
 [sub_resource type="Curve2D" id="Curve2D_po5sc"]
 _data = {
@@ -3921,17 +3930,16 @@ scale = Vector2(1, 3.10938)
 position = Vector2(0, 164)
 
 [node name="Player" parent="." node_paths=PackedStringArray("damageable") instance=ExtResource("2_d7dgu")]
-position = Vector2(3015, -149)
+position = Vector2(3054, -155)
 damageable = NodePath("Damageable")
 
 [node name="AttackWithWeapon" parent="Player" index="11"]
-damage = 200
+damage = 500
 
 [node name="Ennemies" type="Node2D" parent="."]
 
 [node name="FlyingGolemBoss" parent="Ennemies" instance=ExtResource("3_ca2y5")]
 position = Vector2(3315, -208)
-collision_mask = 3
 
 [node name="SawBlades" type="Node2D" parent="."]
 
@@ -3967,7 +3975,7 @@ shape = SubResource("CircleShape2D_qif5s")
 
 [node name="SawBlade" parent="SawBlades" instance=ExtResource("4_wqkqc")]
 position = Vector2(1001, -205)
-saw_speed = 0.05
+saw_speed = 75.0
 
 [node name="Sprite2D" parent="SawBlades/SawBlade" index="0"]
 scale = Vector2(1.5, 1.5)
@@ -3995,7 +4003,7 @@ shape = SubResource("CircleShape2D_ncxta")
 
 [node name="SawBlade3" parent="SawBlades" instance=ExtResource("4_wqkqc")]
 position = Vector2(1006, -535)
-saw_speed = 0.04
+saw_speed = 65.0
 
 [node name="Sprite2D" parent="SawBlades/SawBlade3" index="0"]
 scale = Vector2(1.5, 1.5)
@@ -4132,6 +4140,30 @@ script = ExtResource("7_ba5d6")
 
 [node name="LimitEnemy" type="Node2D" parent="."]
 
+[node name="StaticBody2D4" type="StaticBody2D" parent="LimitEnemy"]
+collision_layer = 256
+collision_mask = 264
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitEnemy/StaticBody2D4"]
+position = Vector2(1160, -655.5)
+shape = SubResource("RectangleShape2D_8h21j")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="LimitEnemy"]
+collision_layer = 256
+collision_mask = 264
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitEnemy/StaticBody2D3"]
+position = Vector2(1733.5, -592)
+shape = SubResource("RectangleShape2D_670w2")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="LimitEnemy"]
+collision_layer = 256
+collision_mask = 264
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitEnemy/StaticBody2D2"]
+position = Vector2(2456, -303.5)
+shape = SubResource("RectangleShape2D_irsf5")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="LimitEnemy"]
 collision_layer = 256
 collision_mask = 264
@@ -4173,6 +4205,7 @@ position = Vector2(1748, -573)
 rotation = 0.386876
 
 [node name="Salle1" type="Path2D" parent="EnemiesSpawnPath"]
+position = Vector2(-5, 26)
 curve = SubResource("Curve2D_x1xtp")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemiesSpawnPath/Salle1"]

@@ -32,6 +32,9 @@ func Update(delta: float):
 	if (player.velocity.y > 0):
 		Transitioned.emit(self, "playerfalling")
 	
+	if Input.is_action_just_pressed("Attack"):
+		Transitioned.emit(self, "playerattack")
+	
 	if Input.is_action_just_pressed("Dash") and player.direction and player.can_dash:
 		Transitioned.emit(self, "playerdash")
 

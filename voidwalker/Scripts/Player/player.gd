@@ -79,7 +79,7 @@ func _on_room_detector_area_exited(area: Area2D) -> void:
 
 
 func _on_death_area_body_entered(body: Node2D) -> void:
-	var damage : int = 200
+	var damage : int = 2000
 	for child in body.get_children():
 		if child is Damageable:
 			child.hit(damage, Vector2.ZERO)
