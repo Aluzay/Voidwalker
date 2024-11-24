@@ -11,6 +11,7 @@ func resume():
 	
 func pause():
 	visible = true
+	$PanelContainer/VBoxContainer/Resume.grab_focus()
 	get_tree().paused = true
 	$AnimationPlayer.play("Blur")
 	
@@ -33,4 +34,4 @@ func _on_restart_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	Global.save_game()
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://Scenes/Menu/MainMenu.tscn")

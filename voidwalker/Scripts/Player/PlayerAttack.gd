@@ -26,7 +26,7 @@ func Update(delta: float):
 	if not player.is_on_floor() and not anim_player.is_playing():
 		Transitioned.emit(self, "playerfalling")
 	
-	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
+	if (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("Jump")) and player.is_on_floor():
 		Transitioned.emit(self, "playerjump")
 	
 	if not anim_player.is_playing():

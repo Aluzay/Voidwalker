@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-func get_animation_player () -> AnimationPlayer:
+func get_animation_player() -> AnimationPlayer:
 	return anim_player
 	
 func _on_timer_timeout() -> void:

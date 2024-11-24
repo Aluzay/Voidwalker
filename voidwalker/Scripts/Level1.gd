@@ -30,15 +30,27 @@ func _ready() -> void:
 	
 		add_child(toast)
 	
-	MusicManager.set_sounds()	
+	if MusicManager.sounds.is_empty():
+		MusicManager.set_sounds()	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	gameEnd()
+	manage_end_game()
 
 func gameEnd() -> void:
 	if is_level1_finish:
 		get_tree().change_scene_to_file("res://Scenes/Levels/Level2.tscn")
-		
+
+func is_on_arcade() -> bool:
+	return OS.get_executable_path().to_lower().contains("retropie")
+
+func manage_end_game() -> void:
+	if is_on_arcade() :
+		if Input.is_action_pressed("hotkey") and Input.is_action_pressed("quit"):
+			get_tree().quit()
+	else :
+		if Input.is_action_just_pressed("quit"):
+			get_tree().quit()	
 
 func _on_end_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

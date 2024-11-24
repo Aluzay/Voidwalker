@@ -3,7 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$VBoxContainer/Start.grab_focus()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_start_pressed() -> void:
+	TimeManager.reset_timer()
 	TimeManager.start_timer()
 	Global.load_game()
 	get_tree().change_scene_to_file("res://Scenes/Levels/Level1.tscn")

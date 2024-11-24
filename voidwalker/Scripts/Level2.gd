@@ -31,7 +31,18 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	manage_end_game()
+
+func is_on_arcade() -> bool:
+	return OS.get_executable_path().to_lower().contains("retropie")
+
+func manage_end_game() -> void:
+	if is_on_arcade() :
+		if Input.is_action_pressed("hotkey") and Input.is_action_pressed("quit"):
+			get_tree().quit()
+	else :
+		if Input.is_action_just_pressed("quit"):
+			get_tree().quit()
 
 func _on_boss_killed() -> void:
 	print("The boss have been killed")

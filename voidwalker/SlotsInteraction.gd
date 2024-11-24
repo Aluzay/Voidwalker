@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 var current_slot_index : int = 0
-@onready var slots : Array = $HBoxContainer.get_children()  # Récupère les Labels (les slots)
+@onready var slots : Array = $HBoxContainer.get_children()
 
 func _ready():
 	highlight_slot(current_slot_index)
@@ -28,15 +28,13 @@ func confirm_name():
 	await Leaderboards.post_guest_score("voidwalkerleaderboar-voidwalker-lead-bCFF", Global.get_player_score(), name)
 	get_tree().change_scene_to_file("res://Scenes/Menu/MainMenu.tscn")
 
-# Met en évidence le slot actif
 func highlight_slot(index):
 	for i in range(slots.size()):
 		if i == index:
-			slots[i].add_theme_color_override("font_color", Color(1, 1, 1))  # Rouge pour activer
+			slots[i].add_theme_color_override("font_color", Color(1, 1, 1))
 		else:
-			slots[i].add_theme_color_override("font_color", Color("3b3b5e"))  # Blanc pour inactif
+			slots[i].add_theme_color_override("font_color", Color("3b3b5e"))
 
-# Naviguer entre les slots
 func next_slot():
 	current_slot_index = (current_slot_index + 1) % slots.size()
 	highlight_slot(current_slot_index)
@@ -45,7 +43,6 @@ func previous_slot():
 	current_slot_index = (current_slot_index - 1 + slots.size()) % slots.size()
 	highlight_slot(current_slot_index)
 
-# Modifier la lettre active
 func change_letter(direction):
 	if direction == "up":
 		slots[current_slot_index].next_letter()

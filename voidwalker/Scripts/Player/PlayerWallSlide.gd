@@ -14,7 +14,7 @@ func Update(delta: float):
 	if player:
 		player.direction = Input.get_axis("Left", "Right")
 		
-		if Input.is_action_just_pressed("ui_accept") and player.direction and player.can_jump_on_wall:
+		if (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("Jump")) and player.direction and player.can_jump_on_wall:
 			Transitioned.emit(self, "playerwalljump")
 		
 		if player.is_on_floor():

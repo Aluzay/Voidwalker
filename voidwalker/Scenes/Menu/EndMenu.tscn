@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://vir8bnjhwffg"]
+[gd_scene load_steps=15 format=3 uid="uid://vir8bnjhwffg"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/EndMenu.gd" id="1_xlue5"]
 [ext_resource type="Shader" path="res://PauseMenu.gdshader" id="2_xsyx3"]
@@ -8,7 +8,12 @@
 shader = ExtResource("2_xsyx3")
 shader_parameter/lod = 0.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_if4h4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdelt"]
+bg_color = Color(0.545098, 0.701961, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k61m0"]
 bg_color = Color(0.545098, 0.701961, 1, 1)
@@ -30,8 +35,6 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxn7b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyvw4"]
 bg_color = Color(0.545098, 0.701961, 1, 1)
@@ -168,12 +171,14 @@ theme_override_constants/separation = 10
 
 [node name="Continue" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Quit")
 theme_override_colors/font_hover_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_pressed_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_focus_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_if4h4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qdelt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_k61m0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_i8skw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_167ei")
@@ -181,12 +186,14 @@ text = "Continue"
 
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Continue")
+focus_neighbor_bottom = NodePath("../Continue")
 theme_override_colors/font_hover_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_pressed_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_focus_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yxn7b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qdelt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wyvw4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4eobw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_f70ih")

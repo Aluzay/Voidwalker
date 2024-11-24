@@ -29,7 +29,7 @@ func Update(delta: float):
 		if Input.is_action_just_pressed("Attack") and player.is_on_floor():
 			Transitioned.emit(self, "playerattack")
 		
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("Jump"):
 			Transitioned.emit(self, "playerjump")
 
 func Exit() -> void:

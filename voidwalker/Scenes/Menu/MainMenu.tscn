@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwkb14pqgpac7"]
+[gd_scene load_steps=12 format=3 uid="uid://cwkb14pqgpac7"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/MainMenu.gd" id="1_6earn"]
 [ext_resource type="Texture2D" uid="uid://bomcirlrpmapp" path="res://Images/13109aa1-9a41-41f7-9aa3-103a9627732d.webp" id="1_yweno"]
@@ -8,7 +8,12 @@
 texture = ExtResource("1_yweno")
 modulate_color = Color(0.306923, 0.306923, 0.306923, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2f20v"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uraam"]
+bg_color = Color(0.545098, 0.701961, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ullw"]
 bg_color = Color(0.545098, 0.701961, 1, 1)
@@ -36,8 +41,6 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(8, 8)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iybes"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dcv5"]
 bg_color = Color(0.545098, 0.701961, 1, 1)
@@ -102,12 +105,14 @@ theme_override_constants/separation = 10
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Options")
 theme_override_colors/font_hover_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_pressed_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_focus_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2f20v")
+theme_override_styles/focus = SubResource("StyleBoxFlat_uraam")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4ullw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mpepw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sk323")
@@ -116,12 +121,14 @@ text = "Start game"
 [node name="Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Leaderboard")
 theme_override_colors/font_hover_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_pressed_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_focus_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2f20v")
+theme_override_styles/focus = SubResource("StyleBoxFlat_uraam")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4ullw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mpepw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sk323")
@@ -129,12 +136,14 @@ text = "Options"
 
 [node name="Leaderboard" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../Exit")
 theme_override_colors/font_hover_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_pressed_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_focus_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_iybes")
+theme_override_styles/focus = SubResource("StyleBoxFlat_uraam")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3dcv5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y75tl")
 theme_override_styles/normal = SubResource("StyleBoxFlat_xkkgg")
@@ -144,12 +153,14 @@ text = "Leaderboard
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Leaderboard")
+focus_neighbor_bottom = NodePath("../Start")
 theme_override_colors/font_hover_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_pressed_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_focus_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_colors/font_color = Color(0.231373, 0.231373, 0.368627, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2f20v")
+theme_override_styles/focus = SubResource("StyleBoxFlat_uraam")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4ullw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mpepw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sk323")

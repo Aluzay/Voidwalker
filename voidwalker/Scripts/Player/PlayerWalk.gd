@@ -29,7 +29,7 @@ func Update(delta: float):
 		if Input.is_action_just_pressed("Dash") and player.direction and player.can_dash:
 			Transitioned.emit(self, "playerdash")
 			
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("Jump"):
 			Transitioned.emit(self, "playerjump")	
 
 func Exit() -> void:
