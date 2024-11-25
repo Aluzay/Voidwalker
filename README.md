@@ -31,4 +31,14 @@ Source : https://www.youtube.com/watch?v=DBgIES-CIUI&t=0s&ab_channel=Verrazano
 Le concept de mon ennemie intelligent est que s'il n'y a pas de joueur dans sa range il va se déplacer aléatoirement, mais quand un joueur est dans sa range il prendra le chemin le plus court à l'aide des nodes de pathfinding de godot et s'il est dans la range d'attaque il va l'attaquer et pour finir le joueur doit se trouver dans l'area d'attaque de l'ennemie quand il attaque pour subir les dégats. 
 Premièrement, l'ennemie possède un node NavigationAgent2D, on lui ajoute 2 timer, 1 pour recalculer le path et l'autre pour la direction aléatoire dans laquelle il ira quand il n'y a pas de joueur. 
 On va binder le signal sur les deux timer. 
-Pour celui du déplacement aléatoire on va regarder si l'ennemie chase un player, s'il ne chase pas de player on change le wait_time du timer pour un nombre aléatoire et on change sa direction pour un Vector2 aléatoire ([Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP])
+Pour celui du déplacement aléatoire on va regarder si l'ennemie chase un player, s'il ne chase pas de player on change le wait_time du timer pour un nombre aléatoire et on change sa direction pour un Vector2 aléatoire ([Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]). 
+Mon ennemie a deux area2D une aggro range et un de aggro range (Aggro range est plus petit que le de aggro range alors la distance pour aggro est plus petite, mais pour perdre l'aggro la distance sera plus grandre). 
+Quand un joueur rentre dans la zone d'aggro l'ennemie il va commencer à poursuivre le player à l'aide de la node NavigationAgent2D qui va lui permettre de trouver le chemin le plus court. 
+Dans mon script de mon ennemiem je calcul la distance entre mon player et mon ennemie et si la distance est plus petite ou égale que mon attack_distance l'ennemie attaque. 
+Mon ennemie a un area2D pour son attaque qui a le setting monitoring a false de base. 
+Pour l'activer, je gère le paramètre dans l'animation player. 
+Je mets le monitoring à true quand l'animation de l'ennemie attaque et quand elle est terminée je le remets à false.
+
+![Ennemies intelligent](/voidwalker/Images/Attack.gif)
+
+Source : https://www.youtube.com/watch?v=1-f4WEy0GBg&t=1079s&ab_channel=Queble

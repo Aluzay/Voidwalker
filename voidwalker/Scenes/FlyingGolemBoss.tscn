@@ -24,6 +24,12 @@ shape = SubResource("CapsuleShape2D_aeqpa")
 [node name="FlyingGolemFly" parent="StateMachine" index="3"]
 attack_distance = 110.0
 
+[node name="Aggro" parent="." index="5"]
+visible = true
+
+[node name="AggroRange" parent="Aggro" index="0"]
+visible = true
+
 [node name="CollisionShape2D" parent="Attack/Area2D" index="0"]
 position = Vector2(79.5, 11.5)
 shape = SubResource("RectangleShape2D_dgahq")
