@@ -8853,7 +8853,6 @@ position = Vector2(-248, -160)
 shape = SubResource("RectangleShape2D_pltwx")
 
 [node name="Rooms" type="Node2D" parent="."]
-visible = false
 
 [node name="Room2" parent="Rooms" instance=ExtResource("9_jd8up")]
 limit_left = -2250
