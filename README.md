@@ -26,3 +26,9 @@ Dans le physic process je récupère le Vector2 et j'appel la fonction lerp (pos
 ![Camera Transition](/voidwalker/Images/GodotEngine2024.11.25-12.30.16.03-ezgif.com-video-to-gif-converter.gif)
 
 Source : https://www.youtube.com/watch?v=DBgIES-CIUI&t=0s&ab_channel=Verrazano
+
+## Ennemies intelligent
+Le concept de mon ennemie intelligent est que s'il n'y a pas de joueur dans sa range il va se déplacer aléatoirement, mais quand un joueur est dans sa range il prendra le chemin le plus court à l'aide des nodes de pathfinding de godot et s'il est dans la range d'attaque il va l'attaquer et pour finir le joueur doit se trouver dans l'area d'attaque de l'ennemie quand il attaque pour subir les dégats. 
+Premièrement, l'ennemie possède un node NavigationAgent2D, on lui ajoute 2 timer, 1 pour recalculer le path et l'autre pour la direction aléatoire dans laquelle il ira quand il n'y a pas de joueur. 
+On va binder le signal sur les deux timer. 
+Pour celui du déplacement aléatoire on va regarder si l'ennemie chase un player, s'il ne chase pas de player on change le wait_time du timer pour un nombre aléatoire et on change sa direction pour un Vector2 aléatoire ([Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP])
