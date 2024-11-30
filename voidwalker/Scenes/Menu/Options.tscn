@@ -46,7 +46,7 @@ text = "Voidwalker"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="Sounds" type="Label" parent="."]
 layout_mode = 2
 offset_left = 464.0
 offset_top = 311.5
@@ -55,6 +55,51 @@ offset_bottom = 334.5
 theme_override_colors/font_color = Color(0.498039, 0.498039, 1, 1)
 theme_override_fonts/font = ExtResource("2_lmtni")
 text = "Sounds : "
+
+[node name="Sauter" type="Label" parent="."]
+offset_left = 464.0
+offset_top = 340.0
+offset_right = 680.0
+offset_bottom = 363.0
+theme_override_colors/font_color = Color(0.498039, 0.498039, 1, 1)
+theme_override_fonts/font = ExtResource("2_lmtni")
+text = "Jump :"
+
+[node name="Attack" type="Label" parent="."]
+offset_left = 463.0
+offset_top = 367.0
+offset_right = 586.0
+offset_bottom = 390.0
+theme_override_colors/font_color = Color(0.498039, 0.498039, 1, 1)
+theme_override_fonts/font = ExtResource("2_lmtni")
+text = "Attack : "
+
+[node name="Dash" type="Label" parent="."]
+offset_left = 464.0
+offset_top = 395.0
+offset_right = 587.0
+offset_bottom = 418.0
+theme_override_colors/font_color = Color(0.498039, 0.498039, 1, 1)
+theme_override_fonts/font = ExtResource("2_lmtni")
+text = "Dash : "
+
+[node name="Switch" type="Label" parent="."]
+offset_left = 463.0
+offset_top = 424.0
+offset_right = 586.0
+offset_bottom = 447.0
+theme_override_colors/font_color = Color(0.498039, 0.498039, 1, 1)
+theme_override_fonts/font = ExtResource("2_lmtni")
+text = "sWITCH : "
+
+[node name="Escape" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 257.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.498039, 0.498039, 1, 1)
+theme_override_fonts/font = ExtResource("2_lmtni")
+text = "Escape to go back"
 
 [node name="HSlider" type="HSlider" parent="."]
 layout_mode = 2
