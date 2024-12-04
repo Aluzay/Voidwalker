@@ -3930,7 +3930,7 @@ scale = Vector2(1, 3.10938)
 position = Vector2(0, 164)
 
 [node name="Player" parent="." node_paths=PackedStringArray("damageable") instance=ExtResource("2_d7dgu")]
-position = Vector2(3054, -155)
+position = Vector2(282, 73)
 damageable = NodePath("Damageable")
 
 [node name="AttackWithWeapon" parent="Player" index="11"]

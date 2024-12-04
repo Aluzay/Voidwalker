@@ -31,7 +31,13 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	cheat()
 	manage_end_game()
+
+func cheat() -> void:
+	if Input.is_action_just_pressed("Cheat"):
+		$Player.position = Vector2(3025, -150)
+		$Player.attack_weapon_area.damage = 500
 
 func is_on_arcade() -> bool:
 	return OS.get_executable_path().to_lower().contains("retropie")

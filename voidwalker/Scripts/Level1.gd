@@ -34,8 +34,14 @@ func _ready() -> void:
 		MusicManager.set_sounds()	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	cheat()
 	gameEnd()
 	manage_end_game()
+
+func cheat() -> void:
+	if Input.is_action_just_pressed("Cheat"):
+		Global.player.enemies_killed = 5
+		$Player.position = Vector2(1050, 520)
 
 func gameEnd() -> void:
 	if is_level1_finish:
