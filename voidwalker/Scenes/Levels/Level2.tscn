@@ -4089,7 +4089,6 @@ tile_map_data = PackedByteArray("AAAKAAAAAAAKAD0AAAAKAAEAAAAKAD4AAAAKAAIAAAAKAD8
 tile_set = SubResource("TileSet_2d5cd")
 
 [node name="Rooms" type="Node2D" parent="."]
-visible = false
 position = Vector2(526, 10)
 
 [node name="Room2" parent="Rooms" instance=ExtResource("6_ggrvh")]

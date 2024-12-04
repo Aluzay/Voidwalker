@@ -8,14 +8,11 @@ func remove_sounds() -> void:
 
 func add_sound(sound : AudioStreamPlayer) -> void:
 	sounds.append(sound) 
-	print("Added sound " + str(sound))
 
 func set_volume(value : float) -> void:
-	print(value)
 	volume = value
 
 func set_sounds() -> void:
-	print(volume)
 	for sound in sounds:
 		if is_instance_valid(sound):
 			sound.volume_db = linear_to_db(volume)

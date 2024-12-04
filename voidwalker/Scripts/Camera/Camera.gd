@@ -19,6 +19,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	zoom_view_size = view_size * zoom
+	print(zoom_view_size)
 	
 	var target_position := calculate_target_position(current_room_center, current_room_size)
 	
